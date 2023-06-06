@@ -5,7 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Order extends Model
+class Consumer extends Model
 {
     use HasFactory;
 
@@ -14,7 +14,7 @@ class Order extends Model
      *
      * @var string
      */
-    protected $table = 'orders';
+    protected $table = 'consumers';
 
     /**
      * The attributes that are mass assignable.
@@ -22,18 +22,11 @@ class Order extends Model
      * @var array
      */
     protected $fillable = [
-        'casierId',
-        'consumerId',
-        'status',
-        'totalAmount',
-        'paymentStatus',
+        'name',
+        'noTelp',
     ];
 
-    public function user(){
-        return $this->hasOne(User::class);
-    }
-
-    public function consumer(){
-        return $this->hasOne(Consumer::class);
+    public function order(){
+        return $this->belongsTo(Order::class);
     }
 }
