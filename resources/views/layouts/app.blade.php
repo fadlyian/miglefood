@@ -28,7 +28,8 @@
             @endif
 
             <!-- Page Content -->
-            <main>
+            <main class="flex">
+                @include('layouts.sidebar')
                 {{ $slot }}
             </main>
         </div>
