@@ -13,6 +13,9 @@
 
         <!-- Scripts -->
         @vite(['resources/css/app.css', 'resources/js/app.js'])
+
+        {{-- favicon --}}
+        <link rel="icon" type="image/x-icon" href="/images/favicon.ico">
     </head>
     <body class="font-sans antialiased">
         <div class="min-h-screen bg-gray-100">
@@ -29,9 +32,9 @@
 
             <!-- Page Content -->
             <main class="flex">
-                @include('layouts.sidebar')
                 {{ $slot }}
             </main>
         </div>
     </body>
+    <script src="https://kit.fontawesome.com/1d72cf6431.js" crossorigin="anonymous"></script>
 </html>

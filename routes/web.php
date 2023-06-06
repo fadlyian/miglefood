@@ -1,7 +1,8 @@
 <?php
 
-use App\Http\Controllers\ProfileController;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\ProfileController;
 
 /*
 |--------------------------------------------------------------------------
@@ -19,23 +20,23 @@ Route::get('/', function () {
 });
 
 Route::get('/dashboard', function () {
-    return view('dashboard');
+    return view('dashboard.dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::get('/add-account', function () {
-    return view('add-account');
+    return view('dashboard.add-account');
 })->middleware(['auth', 'verified'])->name('add-account');
 
 Route::get('/add-menu', function () {
-    return view('add-menu');
+    return view('dashboard.add-menu');
 })->middleware(['auth', 'verified'])->name('add-menu');
 
 Route::get('/change-menu', function () {
-    return view('change-menu');
+    return view('dashboard.change-menu');
 })->middleware(['auth', 'verified'])->name('change-menu');
 
 Route::get('/list-account', function () {
-    return view('list-account');
+    return view('dashboard.list-account');
 })->middleware(['auth', 'verified'])->name('list-account');
 
 Route::middleware('auth')->group(function () {
