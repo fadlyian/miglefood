@@ -13,59 +13,93 @@ use Illuminate\Support\Facades\Route;
 
 Route::middleware('guest')->group(function () {
 
-
     Route::get('login', [AuthenticatedSessionController::class, 'create'])
-                ->name('login');
+        ->name('login');
 
     Route::post('login', [AuthenticatedSessionController::class, 'store']);
 
-    Route::get('forgot-password', [PasswordResetLinkController::class, 'create'])
-                ->name('password.request');
+    // Route::get('forgot-password', [PasswordResetLinkController::class, 'create'])
+    //     ->name('password.request');
 
-    Route::post('forgot-password', [PasswordResetLinkController::class, 'store'])
-                ->name('password.email');
+    // Route::post('forgot-password', [PasswordResetLinkController::class, 'store'])
+    //     ->name('password.email');
 
-    Route::get('reset-password/{token}', [NewPasswordController::class, 'create'])
-                ->name('password.reset');
+    // Route::get('reset-password/{token}', [NewPasswordController::class, 'create'])
+    //     ->name('password.reset');
 
-    Route::post('reset-password', [NewPasswordController::class, 'store'])
-                ->name('password.store');
+    // Route::post('reset-password', [NewPasswordController::class, 'store'])
+    //     ->name('password.store');
 });
 
 Route::middleware('auth')->group(function () {
 
-    Route::middleware('roles:admin')->group(function(){
+    Route::middleware('roles:chef')->group(function(){
+        Route::get('/dashboard-chef', function(){
+            return "ini dashboard chef";
+        })->name('dashboard-chef');
+    });
 
-        Route::get('adminDashboard', function(){
+    Route::middleware('roles:cashier')->group(function(){
+        Route::get('/dashboard-cashier', function(){
+            return "ini dashboard cashier";
+        })->name('dashboard-cashier');
+    });
+
+    Route::middleware('roles:admin')->group(function () {
+
+        Route::get('/dashboard', function () {
+            return view('dashboard.dashboard');
+        })->name('dashboard');
+
+        Route::get('/add-account', function () {
+            return view('dashboard.add-account');
+        })->name('add-account');
+
+        Route::get('/add-menu', function () {
+            return view('dashboard.add-menu');
+        })->name('add-menu');
+
+        Route::get('/change-menu', function () {
+            return view('dashboard.change-menu');
+        })->name('change-menu');
+
+        Route::get('/list-account', function () {
+            return view('dashboard.list-account');
+        })->name('list-account');
+
+        Route::get('adminDashboard', function () {
             echo "ini dashboard Admin";
         });
 
         Route::get('register', [RegisteredUserController::class, 'create'])
-        ->name('register');
+            ->name('register');
 
-        // Route::post('register', [RegisteredUserController::class, 'store']);
+        Route::post('register', [RegisteredUserController::class, 'store']);
     });
 
 
 
+    // Route::get('/dashboardKoki', function(){
+    //     return "asu";
+    // });
     Route::get('verify-email', EmailVerificationPromptController::class)
-                ->name('verification.notice');
+        ->name('verification.notice');
 
     Route::get('verify-email/{id}/{hash}', VerifyEmailController::class)
-                ->middleware(['signed', 'throttle:6,1'])
-                ->name('verification.verify');
+        ->middleware(['signed', 'throttle:6,1'])
+        ->name('verification.verify');
 
     Route::post('email/verification-notification', [EmailVerificationNotificationController::class, 'store'])
-                ->middleware('throttle:6,1')
-                ->name('verification.send');
+        ->middleware('throttle:6,1')
+        ->name('verification.send');
 
     Route::get('confirm-password', [ConfirmablePasswordController::class, 'show'])
-                ->name('password.confirm');
+        ->name('password.confirm');
 
     Route::post('confirm-password', [ConfirmablePasswordController::class, 'store']);
 
     Route::put('password', [PasswordController::class, 'update'])->name('password.update');
 
     Route::post('logout', [AuthenticatedSessionController::class, 'destroy'])
-                ->name('logout');
+        ->name('logout');
 });
