@@ -11,6 +11,7 @@ use App\Http\Controllers\Auth\AuthenticatedSessionController;
 use App\Http\Controllers\Auth\EmailVerificationPromptController;
 use App\Http\Controllers\Auth\AuthenticatedSessionCustomerController;
 use App\Http\Controllers\Auth\EmailVerificationNotificationController;
+use App\Http\Controllers\UserController;
 
 Route::middleware('guest')->group(function () {
 
@@ -32,12 +33,12 @@ Route::middleware('guest')->group(function () {
     //     ->name('password.store');
 });
 
-Route::middleware('customer')->group(function () {
-    Route::get('login-customer', [AuthenticatedSessionCustomerController::class, 'create'])
-                ->name('login-customer');
+// Route::middleware('customer')->group(function () {
+//     Route::get('login-customer', [AuthenticatedSessionCustomerController::class, 'create'])
+//                 ->name('login-customer');
 
-    Route::post('login-customer', [AuthenticatedSessionCustomerController::class, 'store']);
-});
+//     Route::post('login-customer', [AuthenticatedSessionCustomerController::class, 'store']);
+// });
 
 Route::middleware('auth')->group(function () {
 
@@ -59,9 +60,13 @@ Route::middleware('auth')->group(function () {
             return view('dashboard.dashboard');
         })->name('dashboard');
 
-        Route::get('/add-account', function () {
-            return view('dashboard.add-account');
-        })->name('add-account');
+        // Route::get('/add-account', function () {
+        //     return view('dashboard.add-account');
+        // })->name('add-account');
+
+        Route::get('/add-account', [RegisteredUserController::class, 'create'])->name('add-account');
+        Route::post('/add-account', [RegisteredUserController::class, 'store'])->name('add-account');
+        Route::get('/list-account', [UserController::class, 'index'])->name('list-account');
 
         Route::get('/add-menu', function () {
             return view('dashboard.add-menu');
@@ -71,9 +76,7 @@ Route::middleware('auth')->group(function () {
             return view('dashboard.change-menu');
         })->name('change-menu');
 
-        Route::get('/list-account', function () {
-            return view('dashboard.list-account');
-        })->name('list-account');
+
 
         Route::get('adminDashboard', function () {
             echo "ini dashboard Admin";
@@ -86,10 +89,6 @@ Route::middleware('auth')->group(function () {
     });
 
 
-
-    // Route::get('/dashboardKoki', function(){
-    //     return "asu";
-    // });
     Route::get('verify-email', EmailVerificationPromptController::class)
         ->name('verification.notice');
 

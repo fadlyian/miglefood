@@ -20,7 +20,7 @@ class RegisteredUserController extends Controller
      */
     public function create(): View
     {
-        return view('auth.register');
+        return view('dashboard.add-account');
     }
 
     /**
@@ -33,7 +33,7 @@ class RegisteredUserController extends Controller
         $request->validate([
             'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:'.User::class],
-            'password' => ['required', 'confirmed', Rules\Password::defaults()],
+            'password' => ['required'],
             'role' => 'required|in:cashier,chef',
         ]);
 
@@ -44,17 +44,17 @@ class RegisteredUserController extends Controller
             'role' => $request->role,
         ]);
 
-        return redirect()->route('register');
+        return redirect()->route('list-account');
 
-        return response()->json([
-            "success" => "User berhasil Register",
-            "data" => $user,
-        ]);
+        // return response()->json([
+        //     "success" => "User berhasil Register",
+        //     "data" => $user,
+        // ]);
 
-        event(new Registered($user));
+        // event(new Registered($user));
 
-        Auth::login($user);
+        // Auth::login($user);
 
-        return redirect(RouteServiceProvider::HOME);
+        // return redirect(RouteServiceProvider::HOME);
     }
 }

@@ -10,6 +10,10 @@
             <i class="fa-solid fa-user-plus mr-4"></i>
             {{ __('Add Account') }}
         </x-nav-link>
+        <x-nav-link :href="route('list-account')" :active="request()->routeIs('list-account')">
+            <i class="fa-solid fa-user-group mr-4"></i>
+            {{ __('List Account') }}
+        </x-nav-link>
         <h4 class="text-base text-[#727678] pt-[20px] pb-[10px]">MENUS MANAGEMENT</h4>
         <x-nav-link :href="route('add-menu')" :active="request()->routeIs('add-menu')">
             <i class="fa-solid fa-square-plus mr-4"></i>
@@ -20,10 +24,7 @@
             {{ __('Change Menu') }}
         </x-nav-link>
         <h4 class="text-base text-[#727678] pt-[20px] pb-[10px]">SETTINGS</h4>
-        <x-nav-link :href="route('list-account')" :active="request()->routeIs('list-account')">
-            <i class="fa-solid fa-user-group mr-4"></i>
-            {{ __('List Account') }}
-        </x-nav-link>
+
         <form method="POST" action="{{ route('logout') }}" class="inline-flex items-center">
             @csrf
             <x-nav-link href="route('logout')" onclick="event.preventDefault();
