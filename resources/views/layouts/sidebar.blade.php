@@ -1,7 +1,7 @@
 
-<div id="sidebar" class="flex-auto min-h-screen max-w-[30%] h-100% bg-white h-full p-10 shadow-[4px_0px_20px_rgba(0, 0, 0, 0.05)]">
+<div id="sidebar" class="fixed min-h-screen flex-auto min-w-[30%] bg-white p-10 shadow-[4px_0px_20px_rgba(0, 0, 0, 0.05)]">
     <div class="hidden sm:-my-px sm:flex sm:flex-col">
-        <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
+        <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')" class="mt-14">
             <i class="fa-solid fa-dice-four mr-4"></i>
             {{ __('Dashboard') }}
         </x-nav-link>
