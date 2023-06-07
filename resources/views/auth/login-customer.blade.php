@@ -18,7 +18,7 @@
                 <i class="fa-solid fa-arrow-right"></i>
             </x-primary-button>
         </div>
-        <p class="text-center text-[14px] my-3">By clicking ‘Let’s Go’, you agree to our <a href="" class="text-[#BC8B09] underline">Terms of Service</a> and <a href="" class="text-[#BC8B09] underline">Privacy Policy</a>.</p>
+        <p class="text-center text-[14px] my-3">By clicking Let’s Go, you agree to our <a href="" class="text-[#BC8B09] underline">Terms of Service</a> and <a href="" class="text-[#BC8B09] underline">Privacy Policy</a>.</p>
         <label for="marketing_promotion" class="">
             <input id="marketing_promotion" type="checkbox" class="rounded border-gray-300 text-[#FFC529] shadow-sm focus:ring-[#FFC529]" name="marketing">
             <span class="ml-1 text-[14px] text-gray-600">{{ __('Do not wish to receive any marketing or promotional materials') }}</span>
