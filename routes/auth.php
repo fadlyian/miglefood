@@ -6,6 +6,7 @@ use App\Http\Controllers\ProductController;
 use App\Http\Controllers\Auth\PasswordController;
 use App\Http\Controllers\Auth\NewPasswordController;
 use App\Http\Controllers\Auth\VerifyEmailController;
+use App\Http\Controllers\Auth\RegisteredProductController;
 use App\Http\Controllers\Auth\RegisteredUserController;
 use App\Http\Controllers\Auth\PasswordResetLinkController;
 use App\Http\Controllers\Auth\ConfirmablePasswordController;
@@ -69,10 +70,12 @@ Route::middleware('auth')->group(function () {
         Route::post('/add-account', [RegisteredUserController::class, 'store'])->name('add-account');
         Route::get('/list-account', [UserController::class, 'index'])->name('list-account');
 
-        Route::get('/add-menu', function () {
-            return view('dashboard.add-menu');
-        })->name('add-menu');
+        // Route::get('/add-menu', function () {
+        //     return view('dashboard.add-menu');
+        // })->name('add-menu');
 
+        Route::get('/add-menu', [RegisteredProductController::class, 'create'])->name('add-menu');
+        Route::post('/add-menu', [RegisteredProductController::class, 'store'])->name('add-menu');
         Route::get('/list-menu', [ProductController::class, 'index'])->name('list-menu');
 
 
