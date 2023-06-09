@@ -22,29 +22,10 @@ class DatabaseSeeder extends Seeder
         //     'name' => 'Test User',
         //     'email' => 'test@example.com',
         // ]);
-
-        DB::table('users')->insert([
-            'name' => 'fadlyian',
-            'email' => 'admin@gmail.com',
-            'password' => bcrypt('password'),
-            'role' => 'admin',
+        $this->call([
+            CategoriesSeeder::class,
+            UserSeeder::class,
         ]);
 
-        DB::table('users')->insert([
-            'name' => 'arifSaputro',
-            'email' => 'arif@gmail.com',
-            'password' => bcrypt('password'),
-            'role' => 'chef',
-        ]);
-
-        DB::table('users')->insert([
-            'name' => 'adam tengil',
-            'email' => 'adam@gmail.com',
-            'password' => bcrypt('password'),
-            'role' => 'cashier',
-        ]);
-
-
-        Category::factory(5)->create();
     }
 }
