@@ -1,6 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\UserController;
+use App\Http\Controllers\ProductController;
 use App\Http\Controllers\Auth\PasswordController;
 use App\Http\Controllers\Auth\NewPasswordController;
 use App\Http\Controllers\Auth\VerifyEmailController;
@@ -11,7 +13,6 @@ use App\Http\Controllers\Auth\AuthenticatedSessionController;
 use App\Http\Controllers\Auth\EmailVerificationPromptController;
 use App\Http\Controllers\Auth\AuthenticatedSessionCustomerController;
 use App\Http\Controllers\Auth\EmailVerificationNotificationController;
-use App\Http\Controllers\UserController;
 
 Route::middleware('guest')->group(function () {
 
@@ -72,10 +73,7 @@ Route::middleware('auth')->group(function () {
             return view('dashboard.add-menu');
         })->name('add-menu');
 
-        Route::get('/change-menu', function () {
-            return view('dashboard.change-menu');
-        })->name('change-menu');
-
+        Route::get('/list-menu', [ProductController::class, 'index'])->name('list-menu');
 
 
         Route::get('adminDashboard', function () {
