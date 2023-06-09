@@ -27,7 +27,7 @@
                 <!-- Role -->
                 <div class="mt-4">
                     <x-input-label for="role" :value="__('Role')" />
-                    <select name="role" id="role" class="w-full block mt-1 border-gray-300 focus:border-[#FFC529] focus:ring-[#FFC529] rounded-md shadow-sm" equired autofocus>
+                    <select name="role" id="role" class="w-full block mt-1 border-gray-300 focus:border-[#FFC529] focus:ring-[#FFC529] rounded-md shadow-sm" required autofocus>
                         <option disabled selected>Choose One</option>
                         <option value="admin">Admin</option>
                         <option value="cashier">Cashier</option>

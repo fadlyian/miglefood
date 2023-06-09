@@ -19,9 +19,9 @@
             <i class="fa-solid fa-square-plus mr-4"></i>
             {{ __('Add Menu') }}
         </x-nav-link>
-        <x-nav-link :href="route('change-menu')" :active="request()->routeIs('change-menu')">
+        <x-nav-link :href="route('list-menu')" :active="request()->routeIs('list-menu')">
             <i class="fa-solid fa-recycle mr-4"></i>
-            {{ __('Change Menu') }}
+            {{ __('List Menu') }}
         </x-nav-link>
         <h4 class="text-base text-[#727678] pt-[20px] pb-[10px]">SETTINGS</h4>
 
