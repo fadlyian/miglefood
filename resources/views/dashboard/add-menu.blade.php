@@ -13,14 +13,14 @@
                 <!-- Name -->
                 <div>
                     <x-input-label for="name" :value="__('Name')" />
-                    <x-text-input id="name" class="block mt-1 w-full" type="text" name="name" :value="old('name')" />
+                    <x-text-input id="name" class="block mt-1 w-full" type="text" name="name" :value="old('name')" required/>
                     <x-input-error :messages="$errors->get('name')" class="mt-2" />
                 </div>
 
                 <!-- Category -->
                 <div class="mt-4">
                     <x-input-label for="category" :value="__('Category')" />
-                    <select name="category_id" id="category_id" class="w-full block mt-1 border-gray-300 focus:border-[#FFC529] focus:ring-[#FFC529] rounded-md shadow-sm">
+                    <select name="category_id" id="category_id" class="w-full block mt-1 border-gray-300 focus:border-[#FFC529] focus:ring-[#FFC529] rounded-md shadow-sm" required>
                         <option disabled selected>Choose One</option>
                         @foreach ($categories as $category)
                         <option value="{{ $category->id }}">{{ $category->name }}</option>
@@ -32,22 +32,22 @@
                 <!-- Stock -->
                 <div class="mt-4">
                     <x-input-label for="stock" :value="__('Stock')" />
-                    <x-text-input id="stock" class="block mt-1 w-full" type="number" name="stock" :value="old('stock')"/>
+                    <x-text-input id="stock" class="block mt-1 w-full" type="number" name="stock" :value="old('stock')" required/>
                     <x-input-error :messages="$errors->get('stock')" class="mt-2" />
                 </div>
 
                 <!-- Price -->
                 <div class="mt-4">
                     <x-input-label for="price" :value="__('Price')" />
-                    <x-text-input id="price" class="block mt-1 w-full" type="number" name="price" :value="old('price')"/>
+                    <x-text-input id="price" class="block mt-1 w-full" type="number" name="price" :value="old('price')" required/>
                     <x-input-error :messages="$errors->get('price')" class="mt-2" />
                 </div>
 
                 <!-- Choose Image File -->
                 <div class="mt-4">
                     <x-input-label for="image" :value="__('Choose Image')" class="mb-2" />
-                    <input type="file" id="image" name="image" :value="old('image')" hidden/>
-                    <label class="mt-1 px-4 py-2 bg-white border border-gray-300 rounded-full font-semibold text-xs capitalize" for="image">Choose File</label>
+                    <input type="file" id="image" name="image" :value="old('image')" hidden required/>
+                    <label class="mt-1 px-4 py-2 bg-white border border-gray-300 rounded-full font-semibold text-xs capitalize" for="image" >Choose File</label>
                     <span class="text-[14px]" id="file-chosen">No file chosen</span>
                     <script>
                         const actualBtn = document.getElementById('image');

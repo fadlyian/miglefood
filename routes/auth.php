@@ -67,6 +67,7 @@ Route::middleware('auth')->group(function () {
         Route::get('/add-account', [RegisteredUserController::class, 'create'])->name('add-account');
         Route::post('/add-account', [RegisteredUserController::class, 'store'])->name('add-account');
         Route::get('/list-account', [UserController::class, 'index'])->name('list-account');
+        Route::delete('/delete-account/{id}', [UserController::class, 'destroy'])->name('delete-account');
 
         //product/menu
         Route::resource('product', ProductController::class);
