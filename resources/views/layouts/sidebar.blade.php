@@ -15,11 +15,11 @@
             {{ __('List Account') }}
         </x-nav-link>
         <h4 class="text-base text-[#727678] pt-[20px] pb-[10px]">MENUS MANAGEMENT</h4>
-        <x-nav-link :href="route('add-menu')" :active="request()->routeIs('add-menu')">
+        <x-nav-link :href="route('product.create')" :active="request()->routeIs('product.create')">
             <i class="fa-solid fa-square-plus mr-4"></i>
             {{ __('Add Menu') }}
         </x-nav-link>
-        <x-nav-link :href="route('list-menu')" :active="request()->routeIs('list-menu')">
+        <x-nav-link :href="route('product.index')" :active="request()->routeIs('product.index')">
             <i class="fa-solid fa-recycle mr-4"></i>
             {{ __('List Menu') }}
         </x-nav-link>

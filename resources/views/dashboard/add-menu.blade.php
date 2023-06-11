@@ -7,27 +7,24 @@
             <!-- Session Status -->
             <x-auth-session-status class="mb-4" :status="session('status')" />
 
-            <form method="POST" action="{{ route('add-menu') }}">
+            <form method="POST" action="{{ route('product.store') }}" enctype="multipart/form-data">
                 @csrf
 
                 <!-- Name -->
                 <div>
                     <x-input-label for="name" :value="__('Name')" />
-                    <x-text-input id="name" class="block mt-1 w-full" type="text" name="name" :value="old('name')" required />
+                    <x-text-input id="name" class="block mt-1 w-full" type="text" name="name" :value="old('name')" />
                     <x-input-error :messages="$errors->get('name')" class="mt-2" />
                 </div>
 
                 <!-- Category -->
                 <div class="mt-4">
                     <x-input-label for="category" :value="__('Category')" />
-                    <select name="category" id="category" class="w-full block mt-1 border-gray-300 focus:border-[#FFC529] focus:ring-[#FFC529] rounded-md shadow-sm" required>
+                    <select name="category_id" id="category_id" class="w-full block mt-1 border-gray-300 focus:border-[#FFC529] focus:ring-[#FFC529] rounded-md shadow-sm">
                         <option disabled selected>Choose One</option>
-                        <option value="1">Cake</option>
-                        <option value="2">Rice</option>
-                        <option value="3">Meat</option>
-                        <option value="4">Fish</option>
-                        <option value="5">Milk</option>
-                        <option value="6">Drink</option>
+                        @foreach ($categories as $category)
+                        <option value="{{ $category->id }}">{{ $category->name }}</option>
+                        @endforeach
                     </select>
                     <x-input-error :messages="$errors->get('role')" class="mt-2" />
                 </div>
@@ -35,14 +32,14 @@
                 <!-- Stock -->
                 <div class="mt-4">
                     <x-input-label for="stock" :value="__('Stock')" />
-                    <x-text-input id="stock" class="block mt-1 w-full" type="number" name="stock" :value="old('stock')" required/>
+                    <x-text-input id="stock" class="block mt-1 w-full" type="number" name="stock" :value="old('stock')"/>
                     <x-input-error :messages="$errors->get('stock')" class="mt-2" />
                 </div>
 
                 <!-- Price -->
                 <div class="mt-4">
                     <x-input-label for="price" :value="__('Price')" />
-                    <x-text-input id="price" class="block mt-1 w-full" type="number" name="price" :value="old('price')" required/>
+                    <x-text-input id="price" class="block mt-1 w-full" type="number" name="price" :value="old('price')"/>
                     <x-input-error :messages="$errors->get('price')" class="mt-2" />
                 </div>
 

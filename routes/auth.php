@@ -14,6 +14,7 @@ use App\Http\Controllers\Auth\AuthenticatedSessionController;
 use App\Http\Controllers\Auth\EmailVerificationPromptController;
 use App\Http\Controllers\Auth\AuthenticatedSessionCustomerController;
 use App\Http\Controllers\Auth\EmailVerificationNotificationController;
+use App\Models\Product;
 
 Route::middleware('guest')->group(function () {
 
@@ -62,31 +63,19 @@ Route::middleware('auth')->group(function () {
             return view('dashboard.dashboard');
         })->name('dashboard');
 
-        // Route::get('/add-account', function () {
-        //     return view('dashboard.add-account');
-        // })->name('add-account');
-
+        // profile
         Route::get('/add-account', [RegisteredUserController::class, 'create'])->name('add-account');
         Route::post('/add-account', [RegisteredUserController::class, 'store'])->name('add-account');
         Route::get('/list-account', [UserController::class, 'index'])->name('list-account');
 
-        // Route::get('/add-menu', function () {
-        //     return view('dashboard.add-menu');
-        // })->name('add-menu');
-
-        Route::get('/add-menu', [RegisteredProductController::class, 'create'])->name('add-menu');
-        Route::post('/add-menu', [RegisteredProductController::class, 'store'])->name('add-menu');
-        Route::get('/list-menu', [ProductController::class, 'index'])->name('list-menu');
-
+        //product/menu
+        Route::resource('product', ProductController::class);
 
         Route::get('adminDashboard', function () {
             echo "ini dashboard Admin";
         });
 
-        Route::get('register', [RegisteredUserController::class, 'create'])
-            ->name('register');
 
-        Route::post('register', [RegisteredUserController::class, 'store']);
     });
 
 
