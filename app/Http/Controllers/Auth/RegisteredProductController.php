@@ -10,7 +10,7 @@ use App\Http\Controllers\Controller;
 class RegisteredProductController extends Controller {
     public function create(): View
     {
-        return view('dashboard.add-menu');
+        return view('dashboard.menu.add-menu');
     }
 
     /**
@@ -36,6 +36,6 @@ class RegisteredProductController extends Controller {
             'image' => $request->image,
         ]);
 
-        return redirect()->route('list-menu');
+        return redirect()->route('menu.list-menu');
     }
 }

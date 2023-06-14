@@ -20,7 +20,7 @@ class RegisteredUserController extends Controller
      */
     public function create(): View
     {
-        return view('dashboard.add-account');
+        return view('dashboard.account.add-account');
     }
 
     /**
@@ -44,7 +44,7 @@ class RegisteredUserController extends Controller
             'role' => $request->role,
         ]);
 
-        return redirect()->route('list-account');
+        return redirect()->route('account.list-account');
 
         // return response()->json([
         //     "success" => "User berhasil Register",
