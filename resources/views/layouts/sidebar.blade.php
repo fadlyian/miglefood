@@ -5,7 +5,7 @@
             <i class="fa-solid fa-dice-four mr-4"></i>
             {{ __('Dashboard') }}
         </x-nav-link>
-        <h4 class="text-base text-[#727678] pt-[20px] pb-[10px]">STAFF MANAGEMENT</h4>
+        <h4 class="text-base text-[#727678] pt-[20px] pb-[10px]">ACCOUNT MANAGEMENT</h4>
         <x-nav-link :href="route('add-account')" :active="request()->routeIs('add-account')">
             <i class="fa-solid fa-user-plus mr-4"></i>
             {{ __('Add Account') }}
