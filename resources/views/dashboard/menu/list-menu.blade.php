@@ -6,9 +6,9 @@
                 <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg my-3 max-w-[700px]">
                     <div class="p-6 text-gray-900 flex justify-between">
                         @if ($product->image)
-                            {{-- <img src="{{ asset('storage/image/products/' . $product->image) }}" alt="{{ $product->image }}" class="h-[80px] w-[80px] flex-0 mr-6"> --}}
+                            <img src="{{ asset('storage/image/products/' . $product->image) }}" alt="{{ $product->image }}" class="h-[80px] w-[80px] flex-0 mr-6">
+                            @else
                             <img src="{{ asset('/leker.png') }}" alt="Leker" class="max-h-[80px] max-w-[80px] flex-0 mr-6">
-                        @else
                         @endif
                         <div class="flex-1 mr-20 w-[60%]">
                             <p class="text-[24px] font-bold">{{ $product->name }}</p>
