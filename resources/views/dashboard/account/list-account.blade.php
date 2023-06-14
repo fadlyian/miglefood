@@ -10,7 +10,7 @@
                         <p class="capitalize">{{ $user->role }}</p>
                         <p>{{ $user->email }}</p>
                     </div>
-                    <div class="w-[15%] mt-5 flex justify-between">
+                    <div class="w-[15%] items-center flex justify-between">
                         <form method="get" action="">
                             @csrf
                             <button type="submit" class="text-[26px] p-2 bg-green-600 border border-transparent rounded-lg font-semibold text-xs text-white capitalize tracking-widest hover:bg-green-500 active:bg-green-700 focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-offset-2 transition ease-in-out duration-150" x-data="$user->id"><i class="fa-solid fa-arrows-rotate"></i></button>
