@@ -100,4 +100,13 @@ Route::middleware('auth')->group(function () {
 
     Route::post('logout', [AuthenticatedSessionController::class, 'destroy'])
         ->name('logout');
+
+    // hanya untuk cek tampilan
+    Route::get('/edit-account', function(){
+        return view('dashboard.account.edit-account');
+    })->name('edit-account');
+    Route::get('/edit-menu', function(){
+        return view('dashboard.menu.edit-menu');
+    })->name('edit-menu');
+
 });
