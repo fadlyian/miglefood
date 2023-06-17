@@ -47,20 +47,20 @@ Route::middleware('auth')->group(function () {
 
     Route::middleware('roles:chef')->group(function(){
         Route::get('/dashboard-chef', function(){
-            return "ini dashboard chef";
+            return view('dashboard.chef.dashboard');
         })->name('dashboard-chef');
     });
 
     Route::middleware('roles:cashier')->group(function(){
         Route::get('/dashboard-cashier', function(){
-            return "ini dashboard cashier";
+            return view('dashboard.cashier.dashboard');
         })->name('dashboard-cashier');
     });
 
     Route::middleware('roles:admin')->group(function () {
 
         Route::get('/dashboard', function () {
-            return view('dashboard.dashboard');
+            return view('dashboard.admin.dashboard');
         })->name('dashboard');
 
         // profile
@@ -71,12 +71,6 @@ Route::middleware('auth')->group(function () {
 
         //product/menu
         Route::resource('product', ProductController::class);
-
-        Route::get('adminDashboard', function () {
-            echo "ini dashboard Admin";
-        });
-
-
     });
 
 
