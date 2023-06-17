@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Auth\CustomerAuthController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProfileController;
@@ -27,5 +28,12 @@ Route::middleware('auth')->group(function () {
 
 // link to "domain/" redirect to login for customer
 Route::view('/', 'auth.login-customer');
+
+Route::get('/login', [CustomerAuthController::class, 'loginForm'])->name('consumer.login');
+Route::post('/login', [CustomerAuthController::class, 'login'])->name('consumer.login.submit');
+
+Route::view('/home',function(){
+    echo "hallo dek";
+})->name('home');
 
 require __DIR__.'/auth.php';

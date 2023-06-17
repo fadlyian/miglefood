@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('consumers', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->string('noTelp');
+            $table->string('phoneNumber');
             $table->timestamps();
         });
     }
