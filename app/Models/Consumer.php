@@ -23,6 +23,7 @@ class Consumer extends Model
      */
     protected $fillable = [
         'name',
+        'phoneNumber',
     ];
 
     public function order(){
