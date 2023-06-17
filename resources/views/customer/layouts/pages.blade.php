@@ -27,7 +27,22 @@
                 -ms-overflow-style: none;  /* IE and Edge */
                 scrollbar-width: none;  /* Firefox */
             }
+
+            /* {{-- for hidden scrollbar --}} */
+            ::-webkit-scrollbar {
+            width: 10px;
+            }
+            ::-webkit-scrollbar-track {
+            background-color: none;
+            border-radius: 10px;
+            scrollbar-width: thin;
+            }
+            ::-webkit-scrollbar-thumb {
+            background-color: #eeeeee;
+            border-radius: 10px
+            }
         </style>
+
     </head>
     <body class="text-gray-900 pb-[70px]">
         <div class="min-h-screen sm:h-full sm:max-w-md m-auto p-4">
