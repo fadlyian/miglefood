@@ -1,4 +1,12 @@
 <x-guest-layout>
+    <!-- Header Text -->
+    <div class="flex flex-col sm:justify-center items-center">
+        <a href="/">
+            <x-application-logo />
+        </a>
+        <p class="text-[24px] font-semibold mt-[20px]">Welcome!</p>
+        <p class="text-[#727678] text-center mb-[30px] text-[14px]">Enter your Email, Password and then click Log In button to continue to the application</p>
+    </div>
     <!-- Session Status -->
     <x-auth-session-status class="mb-4" :status="session('status')" />
 

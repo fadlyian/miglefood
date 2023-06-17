@@ -7,7 +7,7 @@
 
         <link rel="icon" href="{{ asset('/IconMF.png') }}">
         <title>MigleFood</title>
-        
+
         <!-- Fonts -->
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -16,27 +16,34 @@
         <!-- Scripts -->
         @vite(['resources/css/app.css', 'resources/js/app.js'])
 
-        {{-- favicon --}}
-        <link rel="icon" type="image/x-icon" href="/images/favicon.ico">
+        <style>
+            /* Hide scrollbar for Chrome, Safari and Opera */
+            .no-scrollbar::-webkit-scrollbar {
+                display: none;
+            }
+
+            /* Hide scrollbar for IE, Edge and Firefox */
+            .no-scrollbar {
+                -ms-overflow-style: none;  /* IE and Edge */
+                scrollbar-width: none;  /* Firefox */
+            }
+        </style>
     </head>
-    <body class="font-sans antialiased">
-        <div class="min-h-screen bg-gray-100">
-            @include('layouts.navigation')
+    <body class="text-gray-900 pb-[70px]">
+        <div class="min-h-screen sm:h-full sm:max-w-md m-auto p-4">
 
-            <!-- Page Heading -->
-            @if (isset($header))
-                <header class="bg-white shadow">
-                    <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
-                        {{ $header }}
-                    </div>
-                </header>
-            @endif
+            {{-- Header --}}
+            @include('customer.layouts.header')
 
-            <!-- Page Content -->
-            <main class="flex">
-                {{ $slot }}
-            </main>
+            {{ $slot }}
+
         </div>
+
+        {{-- Button Navigator --}}
+        <div class="fixed bottom-0 w-full m-auto">
+            @include('customer.layouts.btmbar')
+        </div>
+
     </body>
     <script src="https://kit.fontawesome.com/1d72cf6431.js" crossorigin="anonymous"></script>
 </html>
