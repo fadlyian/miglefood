@@ -10,7 +10,7 @@ use App\Http\Controllers\Controller;
 class RegisteredProductController extends Controller {
     public function create(): View
     {
-        return view('dashboard.menu.add-menu');
+        return view('dashboard.admin.menu.add-menu');
     }
 
     /**

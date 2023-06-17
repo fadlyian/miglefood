@@ -20,7 +20,7 @@ class ProductController extends Controller
     {
         $products = Product::orderBy('id', 'desc')->get();
 
-        return view('dashboard.menu.list-menu', [
+        return view('dashboard.admin.menu.list-menu', [
             'products' => $products,
             // 'products' => Product::all(),
         ]);
@@ -31,7 +31,7 @@ class ProductController extends Controller
      */
     public function create()
     {
-        return view('dashboard.menu.add-menu', [
+        return view('dashboard.admin.menu.add-menu', [
             'categories' => Category::all(),
         ]);
     }
