@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Auth\CustomerAuthController;
 use App\Http\Controllers\ConsumerController;
+use App\Http\Controllers\OrderController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProfileController;
@@ -35,7 +36,7 @@ Route::post('/', [ConsumerController::class, 'login'])->name('login-customer-sub
 
 Route::middleware('auth.consumer')->group(function (){
 
-    Route::get('/home', [ConsumerController::class, 'home'])->name('home');
+    Route::get('/home', [OrderController::class, 'home'])->name('home');
     Route::view('/all-orders', 'customer.page.all-orders')->name('all-orders');
     Route::view('/cart', 'customer.page.cart')->name('cart');
     Route::view('/your-orders', 'customer.page.your-orders')->name('your-orders');

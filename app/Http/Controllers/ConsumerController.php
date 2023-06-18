@@ -51,7 +51,6 @@ class ConsumerController extends Controller
                 'error' => $e->getMessage(),
             ]);
         }
-
     }
 
     public function logout()
@@ -63,15 +62,6 @@ class ConsumerController extends Controller
 
         // Redirect to the login page
         return redirect()->route('consumer-login');
-    }
-
-    public function home(){
-
-        return view('customer.home', [
-            'products' => Product::all(),
-            'categories' => Category::all(),
-            'session' => session('consumer'),
-        ]);
     }
 
 }

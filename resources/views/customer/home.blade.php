@@ -1,3 +1,4 @@
+<h1>{{ $session }}</h1>
 <x-pages-layout>
     <h2 class="text-[18px] font-bold">Recommended for you</h2>
             <x-horizontal-scroll>
