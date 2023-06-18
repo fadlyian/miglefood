@@ -22,7 +22,6 @@ class Consumer extends Model
      * @var array
      */
     protected $fillable = [
-        'name',
         'phoneNumber',
     ];
 

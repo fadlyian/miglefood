@@ -111,29 +111,4 @@ Route::middleware('auth')->group(function () {
     //     return view('dashboard.menu.edit-menu');
     // })->name('edit-menu');
 
-    // cuma nyoba tampilan aja
-    // Route::get('/home', function(){
-    //     return view('customer.home');
-    // })->name('home');
-    Route::view('/home', 'customer.home')->name('home');
-
-    Route::get('/all-orders', function(){
-        return view('customer.page.all-orders');
-    })->name('all-orders');
-    // Route::view('/all-orders', 'customer.page.all-orders');
-
-    Route::get('/cart', function(){
-        return view('customer.page.cart');
-    })->name('cart');
-    // Route::view('/cart', 'customer.page.cart');
-
-    Route::get('/your-orders', function(){
-        return view('customer.page.your-orders');
-    })->name('your-orders');
-    // Route::view('/your-orders', 'customer.page.your-orders');
-
-    Route::get('/all-menu', function(){
-        return view('customer.page.all-menu');
-    })->name('all-menu');
-    // Route::view('/all-menu');
 });
