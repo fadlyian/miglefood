@@ -67,6 +67,8 @@ Route::middleware('auth')->group(function () {
         Route::get('/add-account', [RegisteredUserController::class, 'create'])->name('add-account');
         Route::post('/add-account', [RegisteredUserController::class, 'store'])->name('add-account');
         Route::get('/list-account', [UserController::class, 'index'])->name('list-account');
+        Route::get('/edit-account/{id}', [UserController::class, 'edit'])->name('edit-account');
+        Route::put('/update-account/{id}', [UserController::class, 'update'])->name('update-account');
         Route::delete('/delete-account/{id}', [UserController::class, 'destroy'])->name('delete-account');
 
         //product/menu
@@ -102,18 +104,18 @@ Route::middleware('auth')->group(function () {
         ->name('logout');
 
     // hanya untuk cek tampilan
-    Route::get('/edit-account', function(){
-        return view('dashboard.account.edit-account');
-    })->name('edit-account');
-    Route::get('/edit-menu', function(){
-        return view('dashboard.menu.edit-menu');
-    })->name('edit-menu');
+    // Route::get('/edit-account', function(){
+    //     return view('dashboard.account.edit-account');
+    // })->name('edit-account');
+    // Route::get('/edit-menu', function(){
+    //     return view('dashboard.menu.edit-menu');
+    // })->name('edit-menu');
 
     // cuma nyoba tampilan aja
-    Route::get('/home', function(){
-        return view('customer.home');
-    })->name('home');
-    // Route::view('/home', 'customer.home');
+    // Route::get('/home', function(){
+    //     return view('customer.home');
+    // })->name('home');
+    Route::view('/home', 'customer.home')->name('home');
 
     Route::get('/all-orders', function(){
         return view('customer.page.all-orders');

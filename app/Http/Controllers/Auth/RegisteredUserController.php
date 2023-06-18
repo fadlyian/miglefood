@@ -44,7 +44,7 @@ class RegisteredUserController extends Controller
             'role' => $request->role,
         ]);
 
-        return redirect()->route('account.list-account');
+        return redirect()->route('list-account');
 
         // return response()->json([
         //     "success" => "User berhasil Register",
