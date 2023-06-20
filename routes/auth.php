@@ -45,6 +45,22 @@ Route::middleware('guest')->group(function () {
 
 Route::middleware('auth')->group(function () {
 
+    Route::get('/dashboard-order-list', function(){
+        return view('dashboard.sales-management.order-list');
+    })->name('dashboard-order-list');
+
+    Route::get('/dashboard-payment', function(){
+        return view('dashboard.sales-management.payment');
+    })->name('dashboard-payment');
+
+    Route::get('/dashboard-transaction-history', function(){
+        return view('dashboard.sales-management.transaction-history');
+    })->name('dashboard-transaction-history');
+
+    Route::get('/dashboard-transaction-report', function(){
+        return view('dashboard.sales-management.transaction-report');
+    })->name('dashboard-transaction-report');
+
     Route::middleware('roles:chef')->group(function(){
         Route::get('/dashboard-chef', function(){
             return view('dashboard.chef.dashboard');
@@ -72,7 +88,6 @@ Route::middleware('auth')->group(function () {
         //product/menu
         Route::resource('product', ProductController::class);
     });
-
 
     Route::get('verify-email', EmailVerificationPromptController::class)
         ->name('verification.notice');
