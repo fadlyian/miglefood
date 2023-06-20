@@ -1,11 +1,13 @@
 <?php
 
 use App\Http\Controllers\Auth\CustomerAuthController;
+use App\Http\Controllers\CartController;
 use App\Http\Controllers\ConsumerController;
 use App\Http\Controllers\OrderController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProfileController;
+use App\Models\Order;
 
 /*
 |--------------------------------------------------------------------------
@@ -38,7 +40,13 @@ Route::middleware('auth.consumer')->group(function (){
 
     Route::get('/home', [OrderController::class, 'home'])->name('home');
     Route::view('/all-orders', 'customer.page.all-orders')->name('all-orders');
-    Route::view('/cart', 'customer.page.cart')->name('cart');
+
+    // cart
+    // Route::view('/cart', 'customer.page.cart')->name('cart');
+    Route::get('/cartController', [CartController::class, 'viewCart'])->name('cart');
+    Route::post('/addToCart', [CartController::class, 'addToCart'])->name('addToCart');
+    Route::delete('/removeToCart/{id}', [CartController::class, 'removeToCart'])->name('removeToCart');
+
     Route::view('/your-orders', 'customer.page.your-orders')->name('your-orders');
     Route::view('/all-menu', 'customer.page.all-menu')->name('all-menu');
 

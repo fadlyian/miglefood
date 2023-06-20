@@ -1,4 +1,3 @@
-<h1>{{ $session }}</h1>
 <x-pages-layout>
     <h2 class="text-[18px] font-bold">Recommended for you</h2>
             <x-horizontal-scroll>
@@ -39,6 +38,11 @@
                             </div>
                             <strong class="text-[14px]">IDR {{ $product->price }}.00</strong>
                         </div>
+                        <form action="{{ route('addToCart') }}" method="POST">
+                            @csrf
+                            <input type="hidden" name="product_id" value="{{ $product->id }}">
+                            <x-primary-button-two>{{ __('Add to Cart') }}</x-primary-button-two>
+                        </form>
                     </x-product-layout>
                     @endforeach
                     {{-- @for($i = 0; $i < 10; $i++)

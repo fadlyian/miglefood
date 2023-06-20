@@ -1,20 +1,21 @@
 <x-pages-layout>
 @if(true)
     {{-- Main cart --}}
-    @for($i = 0; $i < 20; $i++)
+    @for($i = 0; $i < count($cartItems); $i++)
     <div class="flex flex-column mb-4 text-[14px]">
         <div class="w-full flex justify-between items-center">
-            <strong>Laker Gosong</strong>
+            <strong>{{ $cartItems[$i]->product->name }}</strong>
             <div class="flex items-center">
                 <x-box-button>
                     <i class="fa-solid fa-plus"></i>
                 </x-box-button>
-                <strong class="px-4">5</strong>
+                <strong class="px-4">{{ $cartItems[$i]->quantity }}</strong>
                 <x-box-button>
                     <i class="fa-solid fa-minus"></i>
                 </x-box-button>
             </div>
-            <strong>IDR 11,000.00</strong>
+            <strong>IDR {{ number_format($cartItems[$i]->product->price,2,',','.') }}</strong>
+            {{-- {{ $totPrice = $cartItems[$i]->product->price + $totPrice }} --}}
         </div>
     </div>
     @endfor
@@ -27,15 +28,15 @@
     <div class="w-[95%] p-4 shadow-[0px_0px_20px_-10px_rgba(0,0,0,0.2)] rounded-lg my-4 m-auto sm:max-w-md bg-white text-[14px] hover:shadow-md transition ease-in-out duration-150">
         <x-format-text>
             <p>Sub Total</p>
-            <strong>IDR 324,000.00</strong>
+            <strong>IDR {{ number_format($totPrice,2,',','.') }}</strong>
         </x-format-text>
         <x-format-text>
             <p>PPN (10%)</p>
-            <strong>IDR 32,400.00</strong>
+            <strong>IDR {{ number_format($totPrice * 0.1,2,',','.') }}</strong>
         </x-format-text>
         <x-format-text>
             <p>Grand Total</p>
-            <strong>IDR 356,400.00</strong>
+            <strong>IDR {{ number_format($grandTotal,2,',','.') }}</strong>
         </x-format-text>
     </div>
     {{-- Button Confirm Order --}}

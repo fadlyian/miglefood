@@ -33,15 +33,20 @@ class ConsumerController extends Controller
             // menimpa session consumer dari yg sebelumnya nomer
             session(['consumer' => $consumer]);
 
-            Order::firstOrCreate(
-                ['consumer_id' => $consumer->id],
-                [
-                    'cashier_id' => User::where('id', 4)->first()->id,
-                    'status' => 'belum selesai',
-                    'totalAmount' => '',
-                    'paymentStatus' => 'belum lunas',
-                ]
-            );
+            // $order = Order::firstOrCreate(
+            //     ['consumer_id' => $consumer->id],
+            //     [
+            //         'cashier_id' => User::where('id', 4)->first()->id,
+            //         'status' => 'belum selesai',
+            //         'totalAmount' => '',
+            //         'paymentStatus' => 'belum lunas',
+            //     ]
+            // );
+
+            // session(['order' => $order]);
+            // return response()->json([
+            //     'consumer' => session('consumer'),
+            // ]);
 
             // Redirect to the home page
             return redirect()->route('home');
