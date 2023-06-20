@@ -5,18 +5,24 @@
             <div class="flex">
                 <!-- Logo -->
                 <div class="shrink-0 flex items-center">
-                    <a href="{{ route('dashboard') }}">
+                    @php
+                        if(Auth::user()->role == 'admin') {
+                            $for_a = route('dashboard');
+                            $for_p = "Dashboard Admin";
+                        }
+                        elseif(Auth::user()->role == 'cashier') {
+                            $for_a = route('dashboard-cashier');
+                            $for_p = "Dashboard Cashier";
+                        }
+                        else {
+                            $for_a = route('dashboard-chef');
+                            $for_p = "Dashboard Chef";
+                        }
+                    @endphp
+                    <a href="{{ $for_a }}">
                         <x-application-logo class="block h-[37px] w-auto fill-current text-gray-800" />
                     </a>
-                    <p class="font-bold text-[24px] pl-[10px]">
-                        @if(Auth::user()->role == 'admin')
-                        Dashboard Admin
-                        @elseif(Auth::user()->role == 'cashier')
-                        Dashboard Cashier
-                        @else
-                        Dashboard Chef
-                        @endif
-                    </p>
+                    <p class="font-bold text-[24px] pl-[10px]">{{ $for_p }}</p>
                 </div>
             </div>
 
