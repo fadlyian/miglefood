@@ -53,9 +53,7 @@ Route::middleware('auth')->group(function () {
         return view('dashboard.sales-management.order-list');
     })->name('dashboard-order-list');
 
-    Route::get('/dashboard-transaction-history', function(){
-        return view('dashboard.sales-management.transaction-history');
-    })->name('dashboard-transaction-history');
+    Route::get('/dashboard-transaction-history', [DashboardController::class, 'transactionHistory'])->name('dashboard-transaction-history');
 
     Route::get('/dashboard-transaction-report', function(){
         return view('dashboard.sales-management.transaction-report');

@@ -36,6 +36,18 @@ class DashboardController extends Controller
         return $this->orderList('dashboard.sales-management.payment');
     }
 
+    //
+    public function transactionHistory(){
+        // get order by status = process
+        $order = Order::where('status', 'done')
+        ->where('paymentStatus', 'payed')
+        ->get();
+
+        return view('dashboard.sales-management.transaction-history', [
+            'orders' => $order,
+        ]);
+    }
+
     // dashboard chef
     public function homeChef() {
         return $this->orderList('dashboard.chef.dashboard');
