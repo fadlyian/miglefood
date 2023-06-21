@@ -20,14 +20,19 @@
                     <x-box-button>
                         <i class="fa-solid fa-minus"></i>
                     </x-box-button>
+                    {{-- <p>{{ $cartItems[$i]->id }}</p> --}}
                 </td>
                 <td class="w-[34%] text-right">
                     <strong>IDR {{ number_format($cartItems[$i]->product->price,2,',','.') }}</strong>
                 </td>
                 <td class="w-[8%] text-right">
-                    <x-box-button class="bg-red-500 hover:bg-red-400 focus:bg-red-500 active:bg-red-500 focus:outline-none focus:ring-2 focus:ring-red-500">
-                        <i class="fa-solid fa-trash"></i>
-                    </x-box-button>
+                    <form action="{{ route('removeToCart', $cartItems[$i]->id) }}" method="post">
+                        @csrf
+                        @method('delete')
+                        <x-box-button class="bg-red-500 hover:bg-red-400 focus:bg-red-500 active:bg-red-500 focus:outline-none focus:ring-2 focus:ring-red-500">
+                            <i class="fa-solid fa-trash"></i>
+                        </x-box-button>
+                    </form>
                 </td>
                 </tr>
             </tbody>
