@@ -1,27 +1,38 @@
 <x-pages-layout>
-    @if (true)
+    @if ($cartItems->count() > 0)
         {{-- Main cart --}}
         @for ($i = 0; $i < count($cartItems); $i++)
-            <div class="flex flex-column mb-4 text-[14px]">
-                <div class="w-full flex justify-between items-center">
+        <table class="table-auto w-full mb-4">
+            <tbody>
+                <tr>
+                <td class="w-[35%]">
                     <strong>{{ $cartItems[$i]->product->name }}</strong>
-                    <div class="flex items-center">
-                        <x-box-button>
-                            <i class="fa-solid fa-plus"></i>
-                        </x-box-button>
-                        <strong class="px-4">{{ $cartItems[$i]->quantity }}</strong>
-                        <form action="{{ route('removeToCart', $cartItems[$i]->id) }}" method="post">
-                            @csrf
-                            @method('delete')
-                            <x-box-button>
-                                <i class="fa-solid fa-minus"></i>
-                            </x-box-button>
-                        </form>
-                    </div>
-                    <strong>IDR {{ number_format($cartItems[$i]->product->price, 2, ',', '.') }}</strong>
-                    {{-- {{ $totPrice = $cartItems[$i]->product->price + $totPrice }} --}}
-                </div>
-            </div>
+                </td>
+                <td class="w-[7%]">
+                    <x-box-button>
+                        <i class="fa-solid fa-plus"></i>
+                    </x-box-button>
+                </td>
+                <td class="w-[7%] text-center">
+                    <strong class="px-2">{{ $cartItems[$i]->quantity }}</strong>
+                </td>
+                <td class="w-[7%]">
+                    <x-box-button>
+                        <i class="fa-solid fa-minus"></i>
+                    </x-box-button>
+                </td>
+                <td class="w-[34%] text-right">
+                    <strong>IDR {{ number_format($cartItems[$i]->product->price,2,',','.') }}</strong>
+                </td>
+                <td class="w-[8%] text-right">
+                    <x-box-button class="bg-red-500 hover:bg-red-400 focus:bg-red-500 active:bg-red-500 focus:outline-none focus:ring-2 focus:ring-red-500">
+                        <i class="fa-solid fa-trash"></i>
+                    </x-box-button>
+                </td>
+                </tr>
+            </tbody>
+            </table>
+            {{--  --}}
         @endfor
         </div>
         <div class="mt-[180px]"></div>

@@ -4,9 +4,8 @@
         <h1>{{ $orderItem }}</h1>
     @endforeach --}}
     @for ($i = 0; $i < count($orders); $i++)
-        @if (true)
-            <div class="shadow p-6 rounded-md text-[14px] hover:shadow-md transition ease-in-out duration-150">
-
+        @if ($orders->count() > 0)
+            <div class="shadow p-6 rounded-md text-[14px] hover:shadow-md transition ease-in-out duration-150 mb-4">
                 <x-format-text>
                     <p>Customer Phone</p>
                     <strong>{{ $consumer->phoneNumber }}</strong>
@@ -29,7 +28,7 @@
                         <tr>
                             <td>{{ $orderItem->quantity }}</td>
                             <td>{{ $orderItem->product->name }}</td>
-                            <td>IDR {{ number_format($orderItem->product->price,2,',','.')  }}</td>
+                            <td class="text-right">IDR {{ number_format($orderItem->product->price,2,',','.')  }}</td>
                             {{-- <td class="text-right">IDR {{ number_format() }}</td> --}}
                         </tr>
                     @endforeach
@@ -47,6 +46,21 @@
                     <p>Grand Total</p>
                     <strong>IDR {{ number_format($orders[$i]->grandTotal,2,',','.') }}</strong>
                 </x-format-text>
+                <div class="flex justify-between mt-4 text-white">
+                    {{-- if order is completed --}}
+                    @if(true)
+                    <strong class="bg-green-500 px-2 py-1 rounded-md">Order Completed</strong>
+                    @else
+                    <strong class="bg-red-500 px-2 py-1 rounded-md">Order Not Completed</strong>
+                    @endif
+
+                    {{-- if order is payed --}}
+                    @if(true)
+                    <strong class="bg-green-500 px-2 py-1 rounded-md">The Order Has Been Paid</strong>
+                    @else
+                    <strong class="bg-red-500 px-2 py-1 rounded-md">Unpaid Order</strong>
+                    @endif
+                </div>
             </div>
         @else
             <div
