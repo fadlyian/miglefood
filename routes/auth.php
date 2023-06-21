@@ -62,6 +62,8 @@ Route::middleware('auth')->group(function () {
         return view('dashboard.sales-management.transaction-report');
     })->name('dashboard-transaction-report');
 
+    Route::get('/transaction-report/pdf', [TransactionReportController::class, 'generatePDF'])->name('transaction.pdf');
+
     Route::middleware('roles:chef')->group(function(){
         Route::get('/dashboard-chef', function(){
             return view('dashboard.chef.dashboard');

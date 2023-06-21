@@ -77,8 +77,4 @@ Route::middleware('auth.consumer')->group(function (){
     // Route::get('/all-menu', function(){
     //     return view('customer.page.all-menu');
     // })->name('all-menu');
-
-    Route::get('/transaction-report', [TransactionReportController::class, 'index'])->name('transaction.report');
-    Route::get('/transaction-report/pdf', [TransactionReportController::class, 'generatePDF'])->name('transaction.pdf');
-
 require __DIR__.'/auth.php';
