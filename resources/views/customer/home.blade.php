@@ -36,7 +36,7 @@
                                 <p class="">{{ $product->stock }} left</p>
                                 <i class="fa-solid fa-star text-[#FFC529]"> <span class="text-gray-900">4,8</span></i>
                             </div>
-                            <strong class="text-[14px]">IDR {{ $product->price }}.00</strong>
+                            <strong class="text-[14px]">IDR {{ number_format($product->price,2,',','.') }}</strong>
                         </div>
                         <form action="{{ route('addToCart') }}" method="POST">
                             @csrf
