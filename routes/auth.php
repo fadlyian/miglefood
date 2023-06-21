@@ -53,10 +53,6 @@ Route::middleware('auth')->group(function () {
         return view('dashboard.sales-management.order-list');
     })->name('dashboard-order-list');
 
-    Route::get('/dashboard-payment', function(){
-        return view('dashboard.sales-management.payment');
-    })->name('dashboard-payment');
-
     Route::get('/dashboard-transaction-history', function(){
         return view('dashboard.sales-management.transaction-history');
     })->name('dashboard-transaction-history');
@@ -76,6 +72,7 @@ Route::middleware('auth')->group(function () {
     Route::middleware('roles:cashier')->group(function(){
         Route::get('/dashboard-cashier', [DashboardController::class, 'homeCashier'])->name('dashboard-cashier');
         Route::get('/dashboard-order-list', [DashboardController::class, 'orderListCashier'])->name('dashboard-order-list');
+        Route::get('/dashboard-payment', [DashboardController::class, 'paymentCashier'])->name('dashboard-payment');
     });
 
     Route::middleware('roles:admin')->group(function () {

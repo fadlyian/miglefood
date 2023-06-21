@@ -32,6 +32,9 @@ class DashboardController extends Controller
     public function orderListCashier(){
         return $this->orderList('dashboard.sales-management.order-list');
     }
+    public function paymentCashier() {
+        return $this->orderList('dashboard.sales-management.payment');
+    }
 
     // dashboard chef
     public function homeChef() {
