@@ -9,7 +9,7 @@
         <div class="bg-white text-[16px] p-6 shadow-sm hover:shadow-md rounded-lg w-full mb-6 transition ease-out">
             <div>
                 <x-format-text>
-                    <p>Customer Name</p>
+                    <p>Customer Phone</p>
                     <strong>Arif Saputra</strong>
                 </x-format-text>
                 <div class="h-[2px] w-full bg-slate-100 my-3"></div>

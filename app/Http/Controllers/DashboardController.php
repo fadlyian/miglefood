@@ -59,11 +59,31 @@ class DashboardController extends Controller
             $orderItemsDone[] = OrderDetail::where('order_id', $od->id)->get();
         }
 
+        // get order by status = process
+        $orderNotPayed = Order::where('paymentStatus', 'not payed')->get();
+
+        // get order item by order_id
+        foreach($orderNotPayed as $onp){
+            $orderItemsNotPayed[] = OrderDetail::where('order_id', $onp->id)->get();
+        }
+
+        // get order by status = done;
+        $orderPayed = Order::where('paymentStatus', 'payed')->get();
+
+        // get order item by order_id
+        foreach($orderPayed as $op){
+            $orderItemsPayed[] = OrderDetail::where('order_id', $op->id)->get();
+        }
+
         return view($viewName, [
             'orders' => $order,
             'ordersDone' => $orderDone,
             'orderItems' => $orderItems,
             'orderItemsDone' => $orderItemsDone,
+            'ordersNotPayed' => $orderNotPayed,
+            'ordersPayed' => $orderPayed,
+            'orderItemsNotPayed' => $orderItemsNotPayed,
+            'orderItemsPayed' => $orderItemsPayed,
         ]);
     }
     public function doneOrder(string $id){
