@@ -10,9 +10,14 @@
                     <i class="fa-solid fa-plus"></i>
                 </x-box-button>
                 <strong class="px-4">{{ $cartItems[$i]->quantity }}</strong>
-                <x-box-button>
-                    <i class="fa-solid fa-minus"></i>
-                </x-box-button>
+                <p>{{ $cartItems[$i]->id }}</p>
+                <form action="{{ route('removeToCart', $cartItems[$i]->id ) }}" method="post">
+                    @csrf
+                    @method('delete')
+                    <x-box-button>
+                        <i class="fa-solid fa-minus"></i>
+                    </x-box-button>
+                </form>
             </div>
             <strong>IDR {{ number_format($cartItems[$i]->product->price,2,',','.') }}</strong>
             {{-- {{ $totPrice = $cartItems[$i]->product->price + $totPrice }} --}}
