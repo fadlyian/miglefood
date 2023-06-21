@@ -1,13 +1,14 @@
 <?php
 
-use App\Http\Controllers\Auth\CustomerAuthController;
-use App\Http\Controllers\CartController;
-use App\Http\Controllers\ConsumerController;
-use App\Http\Controllers\OrderController;
+use App\Models\Order;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\CartController;
+use App\Http\Controllers\OrderController;
 use App\Http\Controllers\ProfileController;
-use App\Models\Order;
+use App\Http\Controllers\ConsumerController;
+use App\Http\Controllers\Auth\CustomerAuthController;
+use App\Http\Controllers\TransactionReportController;
 
 /*
 |--------------------------------------------------------------------------
@@ -78,5 +79,8 @@ Route::middleware('auth.consumer')->group(function (){
     // Route::get('/all-menu', function(){
     //     return view('customer.page.all-menu');
     // })->name('all-menu');
+
+    Route::get('/transaction-report', [TransactionReportController::class, 'index'])->name('transaction.report');
+    Route::get('/transaction-report/pdf', [TransactionReportController::class, 'generatePDF'])->name('transaction.pdf');
 
 require __DIR__.'/auth.php';
