@@ -16,7 +16,10 @@ return new class extends Migration
             $table->foreignId('cashier_id')->constrained('users');
             $table->foreignId('consumer_id')->constrained('consumers');
             $table->string('status')->nullable();
-            $table->string('totalAmount')->nullable();
+            $table->string('tableNumber')->nullable();
+            $table->string('subTotal')->nullable();
+            $table->string('ppn')->nullable();
+            $table->string('grandTotal')->nullable();
             $table->string('paymentStatus')->nullable();
             $table->timestamps();
         });

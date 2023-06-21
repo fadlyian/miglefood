@@ -5,38 +5,32 @@ namespace App\Http\Controllers;
 use App\Models\Cart;
 use App\Models\Consumer;
 use App\Models\Order;
+use App\Models\OrderDetail;
 use App\Models\Product;
+use App\Models\User;
+use GuzzleHttp\Handler\Proxy;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class CartController extends Controller
 {
-    // public function showCart(){
-    //     $cart = Cart::where('order_id');
-
-    //     return view('customer.page.cart',[
-    //         'cart'
-    //     ]);
-    // }
-
     public function viewCart()
     {
         $consumer = session('consumer');
         // $consumer = Consumer::find($consumer->id);
         $cartItems = Cart::where('consumer_id', $consumer->id)->get();
 
-        $totPrice = 0;
+        $subTotal = 0;
         for($i=0; $i<count($cartItems); $i++){
-            $totPrice += $cartItems[$i]->product->price;
+            $subTotal += $cartItems[$i]->product->price;
         }
 
-        $grandTotal = $totPrice + $totPrice*0.1;
+        $grandTotal = $subTotal + $subTotal*0.1;
 
-        // return $cartItems[2]->product;
-        // return view('customer.page.cart', compact('consumer', 'cartItems'));
         return view('customer.page.cart', [
             'consumer' => $consumer,
             'cartItems' => $cartItems,
-            'totPrice' => $totPrice,
+            'subTotal' => $subTotal,
             'grandTotal' => $grandTotal,
         ]);
     }
@@ -46,9 +40,6 @@ class CartController extends Controller
         $product = Product::where('id', $request->product_id)->first();
         // mengambil data session consumer
         $consumer = session('consumer');
-
-        // Retrieve the consumer's order (if exists) or create a new order
-        // $order = Order::firstOrCreate(['consumer_id' => $consumer->id]);
 
         // create new order
         Cart::updateOrCreate(
@@ -63,4 +54,46 @@ class CartController extends Controller
         return redirect()->back();
     }
 
+    public function confirmOrder(Request $request){
+        $consumer = session('consumer');
+        // return $request;
+
+        // Retrieve the cart items
+        $cartItems = Cart::where('consumer_id', $consumer->id)->get();
+
+        // store the order
+        $order = Order::create([
+            'cashier_id' => User::where('id', 4)->first()->id,
+            'consumer_id' => $consumer->id,
+            'status' => 'process',
+            'tableNumber' => '',
+            'subTotal' => $request->subTotal,
+            'ppn' => $request->ppn,
+            'grandTotal' => $request->grandTotal,
+            'paymentStatus' => 'belum bayar',
+        ]);
+
+        // Process the cart items and store order details
+        foreach($cartItems as $cardItem){
+            // retrieve product
+            $product = Product::find($cardItem->product_id);
+            OrderDetail::create([
+                'order_id' => $order->id,
+                'product_id' => $product->id,
+                'quantity' => $cardItem->quantity
+            ]);
+        }
+
+        //clear the cart
+        Cart::where('consumer_id', $consumer->id)->delete();
+
+        return response()->redirectToRoute('your-orders');
+    }
+
+    public function removeToCart(string $id){
+        Cart::where('id', $id)->delete();
+
+        return redirect()->back();
+
+    }
 }

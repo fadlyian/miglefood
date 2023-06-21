@@ -1,6 +1,10 @@
 <?php
 
-use App\Models\Order;
+use App\Http\Controllers\Auth\CustomerAuthController;
+use App\Http\Controllers\CartController;
+use App\Http\Controllers\ConsumerController;
+use App\Http\Controllers\OrderController;
+use App\Http\Controllers\OrderDetailController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CartController;
@@ -46,10 +50,19 @@ Route::middleware('auth.consumer')->group(function (){
     // Route::view('/cart', 'customer.page.cart')->name('cart');
     Route::get('/cartController', [CartController::class, 'viewCart'])->name('cart');
     Route::post('/addToCart', [CartController::class, 'addToCart'])->name('addToCart');
+    Route::post('/confirmOrder', [CartController::class, 'confirmOrder'])->name('confirmOrder');
     Route::delete('/removeToCart/{id}', [CartController::class, 'removeToCart'])->name('removeToCart');
 
-    Route::view('/your-orders', 'customer.page.your-orders')->name('your-orders');
-    Route::get('/all-menu', [OrderController::class, 'allMenu'])->name('all-menu');
+// <<<<<<< views
+//     Route::view('/your-orders', 'customer.page.your-orders')->name('your-orders');
+//     Route::get('/all-menu', [OrderController::class, 'allMenu'])->name('all-menu');
+// =======
+    // order
+    // Route::get('/your-orders', 'customer.page.your-orders')->name('your-orders');
+    Route::get('/your-orders', [OrderController::class, 'yourOrder'])->name('your-orders');
+    Route::view('/all-menu', 'customer.page.all-menu')->name('all-menu');
+
+// >>>>>>> master
 });
 
 // Route::view('/home',function(){
