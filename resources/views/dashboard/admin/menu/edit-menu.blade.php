@@ -1,13 +1,13 @@
 <x-app-layout>
-    @include('layouts.sidebar')
+    @include('layouts.sidebar-admin')
     <div class="max-w-7xl mx-auto sm:px-6 lg:px-8 ml-[50%] mt-10">
         <x-form-dashboard>
-            <h1 class="text-center text-[24px] font-bold mb-6">Add Menu</h1>
+            <h1 class="text-center text-[24px] font-bold mb-6">Edit Menu</h1>
 
             <!-- Session Status -->
             <x-auth-session-status class="mb-4" :status="session('status')" />
 
-            <form method="POST" action="{{ route('product.store') }}" enctype="multipart/form-data">
+            <form method="POST" action="{{ route('edit-menu') }}" enctype="multipart/form-data">
                 @csrf
 
                 <!-- Name -->
@@ -22,9 +22,9 @@
                     <x-input-label for="category" :value="__('Category')" />
                     <select name="category_id" id="category_id" class="w-full block mt-1 border-gray-300 focus:border-[#FFC529] focus:ring-[#FFC529] rounded-md shadow-sm" required>
                         <option disabled selected>Choose One</option>
-                        @foreach ($categories as $category)
+                        {{-- @foreach ($categories as $category)
                         <option value="{{ $category->id }}">{{ $category->name }}</option>
-                        @endforeach
+                        @endforeach --}}
                     </select>
                     <x-input-error :messages="$errors->get('role')" class="mt-2" />
                 </div>
@@ -61,7 +61,7 @@
 
                 <div class="flex items-center justify-end mt-4">
                     <x-primary-button class="my-2">
-                        {{ __("Add Menu") }}
+                        {{ __("Edit Menu") }}
                     </x-primary-button>
                 </div>
             </form>

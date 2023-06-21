@@ -45,22 +45,38 @@ Route::middleware('guest')->group(function () {
 
 Route::middleware('auth')->group(function () {
 
+    Route::get('/dashboard-order-list', function(){
+        return view('dashboard.sales-management.order-list');
+    })->name('dashboard-order-list');
+
+    Route::get('/dashboard-payment', function(){
+        return view('dashboard.sales-management.payment');
+    })->name('dashboard-payment');
+
+    Route::get('/dashboard-transaction-history', function(){
+        return view('dashboard.sales-management.transaction-history');
+    })->name('dashboard-transaction-history');
+
+    Route::get('/dashboard-transaction-report', function(){
+        return view('dashboard.sales-management.transaction-report');
+    })->name('dashboard-transaction-report');
+
     Route::middleware('roles:chef')->group(function(){
         Route::get('/dashboard-chef', function(){
-            return "ini dashboard chef";
+            return view('dashboard.chef.dashboard');
         })->name('dashboard-chef');
     });
 
     Route::middleware('roles:cashier')->group(function(){
         Route::get('/dashboard-cashier', function(){
-            return "ini dashboard cashier";
+            return view('dashboard.cashier.dashboard');
         })->name('dashboard-cashier');
     });
 
     Route::middleware('roles:admin')->group(function () {
 
         Route::get('/dashboard', function () {
-            return view('dashboard.dashboard');
+            return view('dashboard.admin.dashboard');
         })->name('dashboard');
 
         // profile
@@ -73,14 +89,7 @@ Route::middleware('auth')->group(function () {
 
         //product/menu
         Route::resource('product', ProductController::class);
-
-        Route::get('adminDashboard', function () {
-            echo "ini dashboard Admin";
-        });
-
-
     });
-
 
     Route::get('verify-email', EmailVerificationPromptController::class)
         ->name('verification.notice');

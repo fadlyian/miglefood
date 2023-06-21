@@ -1,13 +1,13 @@
 <x-app-layout>
-    @include('layouts.sidebar')
+    @include('layouts.sidebar-admin')
     <div class="max-w-7xl mx-auto sm:px-6 lg:px-8 ml-[50%] mt-10">
         <x-form-dashboard>
-            <h1 class="text-center text-[24px] font-bold mb-6">Add Account</h1>
+            <h1 class="text-center text-[24px] font-bold mb-6">Edit Account</h1>
 
             <!-- Session Status -->
             <x-auth-session-status class="mb-4" :status="session('status')" />
 
-            <form method="POST" action="{{ route('add-account') }}">
+            <form method="POST" action="{{ route('edit-account') }}">
                 @csrf
 
                 <!-- Name -->
@@ -50,7 +50,7 @@
 
                 <div class="flex items-center justify-end mt-4">
                     <x-primary-button class="my-2">
-                        {{ __("Add Account") }}
+                        {{ __("Edit Account") }}
                     </x-primary-button>
                 </div>
             </form>

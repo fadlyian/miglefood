@@ -7,7 +7,7 @@
 
         <link rel="icon" href="{{ asset('/IconMF.png') }}">
         <title>MigleFood</title>
-        
+
         <!-- Fonts -->
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -18,6 +18,22 @@
 
         {{-- favicon --}}
         <link rel="icon" type="image/x-icon" href="/images/favicon.ico">
+
+        {{-- for hidden scrollbar --}}
+        <style>
+            ::-webkit-scrollbar {
+            width: 10px;
+            }
+            ::-webkit-scrollbar-track {
+            background-color: none;
+            border-radius: 10px;
+            scrollbar-width: thin;
+            }
+            ::-webkit-scrollbar-thumb {
+            background-color: #eeeeee;
+            border-radius: 10px
+            }
+        </style>
     </head>
     <body class="font-sans antialiased">
         <div class="min-h-screen bg-gray-100">

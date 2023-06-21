@@ -14,7 +14,7 @@ class UserController extends Controller
     public function index(){
         $data = User::all();
 
-        return view('dashboard.account.list-account',[
+        return view('dashboard.admin.account.list-account',[
             'users' => $data,
         ]);
     }

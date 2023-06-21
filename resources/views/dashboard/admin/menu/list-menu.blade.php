@@ -1,5 +1,5 @@
 <x-app-layout>
-    @include('layouts.sidebar')
+    @include('layouts.sidebar-admin')
     <div class="ml-[40%] mt-10 py-12 flex-auto">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             @foreach ($products as $product)
