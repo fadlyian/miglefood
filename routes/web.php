@@ -28,8 +28,6 @@ Route::middleware('auth')->group(function () {
 });
 
 // link to "domain/" redirect to login for customer
-// Route::view('/', 'auth.login-customer');
-
 Route::get('/', [ConsumerController::class, 'loginForm'])->name('login-customer');
 Route::post('/', [ConsumerController::class, 'login'])->name('login-customer-submit');
 
@@ -45,16 +43,11 @@ Route::middleware('auth.consumer')->group(function (){
     Route::post('/confirmOrder', [CartController::class, 'confirmOrder'])->name('confirmOrder');
     Route::delete('/removeToCart/{id}', [CartController::class, 'removeToCart'])->name('removeToCart');
 
-// <<<<<<< views
-//     Route::view('/your-orders', 'customer.page.your-orders')->name('your-orders');
-//     Route::get('/all-menu', [OrderController::class, 'allMenu'])->name('all-menu');
-// =======
     // order
     // Route::get('/your-orders', 'customer.page.your-orders')->name('your-orders');
     Route::get('/your-orders', [OrderController::class, 'yourOrder'])->name('your-orders');
     Route::view('/all-menu', 'customer.page.all-menu')->name('all-menu');
 
-// >>>>>>> master
 });
 
 // Route::view('/home',function(){
