@@ -20,5 +20,6 @@ class TransactionReportController extends Controller
 
         $pdf = PDF::loadview('dashboard.sales-management.transaction-pdf',['orders'=>$orders]);
     	return $pdf->stream();
+        // return $pdf->download('transaction-report.pdf');
     }
 }
