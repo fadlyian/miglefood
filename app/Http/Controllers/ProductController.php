@@ -67,6 +67,7 @@ class ProductController extends Controller
      */
     public function show(string $id)
     {
+
     }
 
     /**
@@ -74,15 +75,23 @@ class ProductController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $data = Product::findOrFail($id);
+
+        return view('dashboard.menu.edit-menu',[
+            'data' => $data,
+            'categories' => Category::all(),
+        ]);
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(ProductRequest $request, string $id)
     {
-        //
+        $validated = $request->validated();
+        Product::findOrFail($id)->update($validated);
+
+        return response()->redirectToRoute('product.index');
     }
 
     /**

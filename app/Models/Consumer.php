@@ -22,8 +22,7 @@ class Consumer extends Model
      * @var array
      */
     protected $fillable = [
-        'name',
-        'noTelp',
+        'phoneNumber',
     ];
 
     public function order(){

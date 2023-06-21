@@ -1,8 +1,13 @@
 <?php
 
+use App\Http\Controllers\Auth\CustomerAuthController;
+use App\Http\Controllers\CartController;
+use App\Http\Controllers\ConsumerController;
+use App\Http\Controllers\OrderController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProfileController;
+use App\Models\Order;
 
 /*
 |--------------------------------------------------------------------------
@@ -26,6 +31,52 @@ Route::middleware('auth')->group(function () {
 });
 
 // link to "domain/" redirect to login for customer
-Route::view('/', 'auth.login-customer');
+// Route::view('/', 'auth.login-customer');
+
+Route::get('/', [ConsumerController::class, 'loginForm'])->name('login-customer');
+Route::post('/', [ConsumerController::class, 'login'])->name('login-customer-submit');
+
+Route::middleware('auth.consumer')->group(function (){
+
+    Route::get('/home', [OrderController::class, 'home'])->name('home');
+    Route::view('/all-orders', 'customer.page.all-orders')->name('all-orders');
+
+    // cart
+    // Route::view('/cart', 'customer.page.cart')->name('cart');
+    Route::get('/cartController', [CartController::class, 'viewCart'])->name('cart');
+    Route::post('/addToCart', [CartController::class, 'addToCart'])->name('addToCart');
+    Route::delete('/removeToCart/{id}', [CartController::class, 'removeToCart'])->name('removeToCart');
+
+    Route::view('/your-orders', 'customer.page.your-orders')->name('your-orders');
+    Route::view('/all-menu', 'customer.page.all-menu')->name('all-menu');
+
+
+});
+
+// Route::view('/home',function(){
+//     echo "hallo dek";
+// })->name('home');
+
+// cuma nyoba tampilan aja
+    // Route::get('/home', function(){
+    //     return view('customer.home');
+    // })->name('home');
+
+
+    // Route::get('/all-orders', function(){
+    //     return view('customer.page.all-orders');
+    // })->name('all-orders');
+
+    // Route::get('/cart', function(){
+    //     return view('customer.page.cart');
+    // })->name('cart');
+
+    // Route::get('/your-orders', function(){
+    //     return view('customer.page.your-orders');
+    // })->name('your-orders');
+
+    // Route::get('/all-menu', function(){
+    //     return view('customer.page.all-menu');
+    // })->name('all-menu');
 
 require __DIR__.'/auth.php';

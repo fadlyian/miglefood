@@ -21,12 +21,8 @@ class Order extends Model
      *
      * @var array
      */
-    protected $fillable = [
-        'casierId',
-        'consumerId',
-        'status',
-        'totalAmount',
-        'paymentStatus',
+    protected $guarded = [
+        'id'
     ];
 
     public function user(){

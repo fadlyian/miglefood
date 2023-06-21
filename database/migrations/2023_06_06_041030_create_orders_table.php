@@ -13,11 +13,11 @@ return new class extends Migration
     {
         Schema::create('orders', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('casierId')->constrained('users');
-            $table->foreignId('consumerId')->constrained('consumers');
-            $table->string('status');
-            $table->string('totalAmount');
-            $table->string('paymentStatus');
+            $table->foreignId('cashier_id')->constrained('users');
+            $table->foreignId('consumer_id')->constrained('consumers');
+            $table->string('status')->nullable();
+            $table->string('totalAmount')->nullable();
+            $table->string('paymentStatus')->nullable();
             $table->timestamps();
         });
     }
