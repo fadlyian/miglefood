@@ -55,9 +55,7 @@ Route::middleware('auth')->group(function () {
 
     Route::get('/dashboard-transaction-history', [DashboardController::class, 'transactionHistory'])->name('dashboard-transaction-history');
 
-    Route::get('/dashboard-transaction-report', function(){
-        return view('dashboard.sales-management.transaction-report');
-    })->name('dashboard-transaction-report');
+    Route::get('/dashboard-transaction-report', [DashboardController::class, 'transactionReport'])->name('dashboard-transaction-report');
 
     Route::get('/transaction-report/pdf', [TransactionReportController::class, 'generatePDF'])->name('transaction.pdf');
 

@@ -14,7 +14,9 @@
                     <p class="text-[20px] font-bold">Total Sales</p>
                     @foreach ($orders as $order)
                     @php
-                    $totalAll += $order->grandTotal;
+                    if ($order->status == 'done' && $order->paymentStatus == 'payed') {
+                        $totalAll += $order->grandTotal;
+                    }
                     @endphp
                     @endforeach
                     <strong class="text-[30px] text-[#BC8B09]">IDR {{ number_format($totalAll,2,',','.') }}</strong>

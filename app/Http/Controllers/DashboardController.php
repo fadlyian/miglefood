@@ -47,6 +47,16 @@ class DashboardController extends Controller
             'orders' => $order,
         ]);
     }
+    public function transactionReport(){
+        // get order by status = process
+        $order = Order::where('status', 'done')
+        ->where('paymentStatus', 'payed')
+        ->get();
+
+        return view('dashboard.sales-management.transaction-report', [
+            'orders' => $order,
+        ]);
+    }
 
     // dashboard chef
     public function homeChef() {
