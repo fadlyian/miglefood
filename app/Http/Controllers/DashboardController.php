@@ -49,7 +49,7 @@ class DashboardController extends Controller
         }
 
         // get order by status = done;
-        $orderDone = Order::where('status', 'Done')->get();
+        $orderDone = Order::where('status', 'done')->get();
 
         // get order item by order_id
         foreach($orderDone as $od){

@@ -71,7 +71,7 @@
                         <th class="text-left">Item</th>
                         <th class="text-right">Price</th>
                     </tr>
-                    @foreach ($orderItems[$i] as $orderItem)
+                    @foreach ($orderItemsDone[$i] as $orderItem)
                         <tr>
                             <td>{{ $orderItem->quantity }}</td>
                             <td>{{ $orderItem->product->name }}</td>
@@ -82,15 +82,15 @@
                 <div class="h-[2px] w-full bg-slate-100 my-3"></div>
                 <x-format-text>
                     <p>Sub Total</p>
-                    <strong>IDR {{ number_format($orders[$i]->subTotal,2,',','.') }}</strong>
+                    <strong>IDR {{ number_format($ordersDone[$i]->subTotal,2,',','.') }}</strong>
                 </x-format-text>
                 <x-format-text>
                     <p>PPN (10%)</p>
-                    <strong>IDR {{ number_format($orders[$i]->ppn,2,',','.') }}</strong>
+                    <strong>IDR {{ number_format($ordersDone[$i]->ppn,2,',','.') }}</strong>
                 </x-format-text>
                 <x-format-text>
                     <p>Grand Total</p>
-                    <strong>IDR {{ number_format($orders[$i]->grandTotal,2,',','.') }}</strong>
+                    <strong>IDR {{ number_format($ordersDone[$i]->grandTotal,2,',','.') }}</strong>
                 </x-format-text>
             </div>
         @endfor
