@@ -1,8 +1,4 @@
 <x-pages-layout>
-    {{-- <h1>{{ $order }}</h1>
-    @foreach ($orderItems as $orderItem)
-        <h1>{{ $orderItem }}</h1>
-    @endforeach --}}
     @for ($i = 0; $i < count($orders); $i++)
         @if ($orders->count() > 0)
             <div class="shadow p-6 rounded-md text-[14px] hover:shadow-md transition ease-in-out duration-150 mb-4">
@@ -12,7 +8,7 @@
                 </x-format-text>
                 <x-format-text>
                     <p>Table Number</p>
-                    <strong>11</strong>
+                    <strong>{{ $orders[$i]->tableNumber }}</strong>
                 </x-format-text>
                 <x-format-text>
                     <p>Order to</p>
@@ -71,6 +67,5 @@
             </div>
         @endif
     @endfor
-
     </div>
     </x-pages-layouts>
