@@ -3,7 +3,9 @@
 use App\Models\Product;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\KitchenController;
 use App\Http\Controllers\ProductController;
+use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\Auth\PasswordController;
 use App\Http\Controllers\Auth\NewPasswordController;
 use App\Http\Controllers\Auth\VerifyEmailController;
@@ -14,10 +16,9 @@ use App\Http\Controllers\Auth\RegisteredProductController;
 use App\Http\Controllers\Auth\ConfirmablePasswordController;
 use App\Http\Controllers\Auth\AuthenticatedSessionController;
 use App\Http\Controllers\Auth\EmailVerificationPromptController;
+
 use App\Http\Controllers\Auth\AuthenticatedSessionCustomerController;
 use App\Http\Controllers\Auth\EmailVerificationNotificationController;
-
-use App\Http\Controllers\KitchenController;
 
 Route::middleware('guest')->group(function () {
 
@@ -68,15 +69,13 @@ Route::middleware('auth')->group(function () {
 
     // Kitchen or Chef or Dapur
     Route::middleware('roles:chef')->group(function(){
-        // Route::get('/dashboard-chef', function(){
-        //     return view('dashboard.chef.dashboard');
-        // })->name('dashboard-chef');
         Route::get('/dashboard-chef', [KitchenController::class, 'view'])->name('dashboard-chef');
         Route::get('/doneOrder/{id}', [KitchenController::class, 'doneOrder'])->name('doneOrder');
     });
 
     Route::middleware('roles:cashier')->group(function(){
         Route::get('/dashboard-cashier', [DashboardController::class, 'homeCashier'])->name('dashboard-cashier');
+        Route::get('/dashboard-order-list', [DashboardController::class, 'orderListCashier'])->name('dashboard-order-list');
     });
 
     Route::middleware('roles:admin')->group(function () {
