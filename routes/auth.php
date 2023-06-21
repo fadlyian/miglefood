@@ -16,7 +16,8 @@ use App\Http\Controllers\Auth\AuthenticatedSessionController;
 use App\Http\Controllers\Auth\EmailVerificationPromptController;
 use App\Http\Controllers\Auth\AuthenticatedSessionCustomerController;
 use App\Http\Controllers\Auth\EmailVerificationNotificationController;
-use App\Http\Controllers\DashboardController;
+
+use App\Http\Controllers\KitchenController;
 
 Route::middleware('guest')->group(function () {
 
@@ -65,10 +66,13 @@ Route::middleware('auth')->group(function () {
 
     Route::get('/transaction-report/pdf', [TransactionReportController::class, 'generatePDF'])->name('transaction.pdf');
 
+    // Kitchen or Chef or Dapur
     Route::middleware('roles:chef')->group(function(){
-        Route::get('/dashboard-chef', function(){
-            return view('dashboard.chef.dashboard');
-        })->name('dashboard-chef');
+        // Route::get('/dashboard-chef', function(){
+        //     return view('dashboard.chef.dashboard');
+        // })->name('dashboard-chef');
+        Route::get('/dashboard-chef', [KitchenController::class, 'view'])->name('dashboard-chef');
+        Route::get('/doneOrder/{id}', [KitchenController::class, 'doneOrder'])->name('doneOrder');
     });
 
     Route::middleware('roles:cashier')->group(function(){

@@ -39,7 +39,6 @@ class OrderController extends Controller
             'orders' => $order,
             'orderItems' => $orderItems,
 
-// >>>>>>> master
         ]);
     }
 }
