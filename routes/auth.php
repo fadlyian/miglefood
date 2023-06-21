@@ -16,6 +16,7 @@ use App\Http\Controllers\Auth\AuthenticatedSessionController;
 use App\Http\Controllers\Auth\EmailVerificationPromptController;
 use App\Http\Controllers\Auth\AuthenticatedSessionCustomerController;
 use App\Http\Controllers\Auth\EmailVerificationNotificationController;
+use App\Http\Controllers\DashboardController;
 
 Route::middleware('guest')->group(function () {
 
@@ -71,16 +72,12 @@ Route::middleware('auth')->group(function () {
     });
 
     Route::middleware('roles:cashier')->group(function(){
-        Route::get('/dashboard-cashier', function(){
-            return view('dashboard.cashier.dashboard');
-        })->name('dashboard-cashier');
+        Route::get('/dashboard-cashier', [DashboardController::class, 'homeCashier'])->name('dashboard-cashier');
     });
 
     Route::middleware('roles:admin')->group(function () {
 
-        Route::get('/dashboard', function () {
-            return view('dashboard.admin.dashboard');
-        })->name('dashboard');
+        Route::get('/dashboard', [DashboardController::class, 'homeAdmin'])->name('dashboard');
 
         // profile
         Route::get('/add-account', [RegisteredUserController::class, 'create'])->name('add-account');
