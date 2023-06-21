@@ -15,4 +15,11 @@ class OrderController extends Controller
             'session' => session('consumer'),
         ]);
     }
+
+    public function allMenu(){
+        return view('customer.page.all-menu', [
+            'products' => Product::all(),
+            'categories' => Category::all(),
+        ]);
+    }
 }
