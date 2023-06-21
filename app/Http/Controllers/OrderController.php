@@ -20,6 +20,7 @@ class OrderController extends Controller
         return view('customer.page.all-menu', [
             'products' => Product::all(),
             'categories' => Category::all(),
+            'session' => session('consumer'),
         ]);
     }
 }
