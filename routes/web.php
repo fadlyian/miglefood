@@ -1,18 +1,10 @@
 <?php
 
-use App\Http\Controllers\Auth\CustomerAuthController;
-use App\Http\Controllers\CartController;
-use App\Http\Controllers\ConsumerController;
-use App\Http\Controllers\OrderController;
-use App\Http\Controllers\OrderDetailController;
-use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ConsumerController;
-use App\Http\Controllers\Auth\CustomerAuthController;
-use App\Http\Controllers\TransactionReportController;
 
 /*
 |--------------------------------------------------------------------------
