@@ -18,13 +18,13 @@ class OrderController extends Controller
         ]);
     }
 
-// <<<<<<< views
-//     public function allMenu(){
-//         return view('customer.page.all-menu', [
-//             'products' => Product::all(),
-//             'categories' => Category::all(),
-//             'session' => session('consumer'),
-// =======
+    public function allMenu(){
+        return view('customer.page.all-menu', [
+            'products' => Product::all(),
+            'categories' => Category::all(),
+            'session' => session('consumer'),
+        ]);
+    }
     public function yourOrder(){
         // get order by consumer_id
         $order = Order::where('consumer_id',session('consumer')->id)->get();
