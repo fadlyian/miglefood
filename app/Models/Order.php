@@ -30,6 +30,6 @@ class Order extends Model
     }
 
     public function consumer(){
-        return $this->hasOne(Consumer::class);
+        return $this->belongsTo(Consumer::class);
     }
 }
