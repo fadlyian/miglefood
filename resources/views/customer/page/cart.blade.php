@@ -1,23 +1,38 @@
 <x-pages-layout>
 @if(true)
     {{-- Main cart --}}
+
     @for($i = 0; $i < count($cartItems); $i++)
-    <div class="flex flex-column mb-4 text-[14px]">
-        <div class="w-full flex justify-between items-center">
+    <table class="table-auto w-full mb-4">
+    <tbody>
+        <tr>
+        <td class="w-[35%]">
             <strong>{{ $cartItems[$i]->product->name }}</strong>
-            <div class="flex items-center">
-                <x-box-button>
-                    <i class="fa-solid fa-plus"></i>
-                </x-box-button>
-                <strong class="px-4">{{ $cartItems[$i]->quantity }}</strong>
-                <x-box-button>
-                    <i class="fa-solid fa-minus"></i>
-                </x-box-button>
-            </div>
+        </td>
+        <td class="w-[7%]">
+            <x-box-button>
+                <i class="fa-solid fa-plus"></i>
+            </x-box-button>
+        </td>
+        <td class="w-[7%] text-center">
+            <strong class="px-2">{{ $cartItems[$i]->quantity }}</strong>
+        </td>
+        <td class="w-[7%]">
+            <x-box-button>
+                <i class="fa-solid fa-minus"></i>
+            </x-box-button>
+        </td>
+        <td class="w-[34%] text-right">
             <strong>IDR {{ number_format($cartItems[$i]->product->price,2,',','.') }}</strong>
-            {{-- {{ $totPrice = $cartItems[$i]->product->price + $totPrice }} --}}
-        </div>
-    </div>
+        </td>
+        <td class="w-[8%] text-right">
+            <x-box-button class="bg-red-500 hover:bg-red-400 focus:bg-red-500 active:bg-red-500 focus:outline-none focus:ring-2 focus:ring-red-500">
+                <i class="fa-solid fa-trash"></i>
+            </x-box-button>
+        </td>
+        </tr>
+    </tbody>
+    </table>
     @endfor
 </div>
 <div class="mt-[180px]"></div>
@@ -45,7 +60,7 @@
 @else
 <div class="text-center shadow p-6 rounded-md text-[14px] hover:shadow-md transition ease-in-out duration-150 flex flex-col">
     <strong>You don't have any products in your cart yet!</strong>
-    <a class="mt-4 text-center py-1 bg-[#FFC529] border border-transparent rounded-full font-semibold text-xs text-black capitalize tracking-widest hover:bg-[#FFD669] focus:bg-[#FFD669] active:[#FFC529] focus:outline-none focus:ring-2 focus:ring-[#FFC529] focus:ring-offset-2 transition ease-in-out duration-150" href="/home">Search for Products!</a>
+    <a class="mt-4 text-center py-1 bg-[#FFC529] border-transparent rounded-full font-semibold text-xs text-black capitalize tracking-widest hover:bg-[#FFD669] focus:bg-[#FFD669] active:[#FFC529] focus:outline-none focus:ring-2 focus:ring-[#FFC529] focus:ring-offset-2 transition ease-in-out duration-150" href="/home">Search for Products!</a>
 </div>
 @endif
 </x-pages-layout>
