@@ -11,12 +11,12 @@ class CashierController extends Controller
 {
     public function view(){
         //atribute
-        $ordersNotProcess='';
-        $orderItemsNotProcess[]=[];
-        $ordersProcess='';
-        $orderItemsProcess[]=[];
-        $ordersDone='';
-        $orderItemsDone[]=[];
+        $ordersNotProcess=NULL;
+        $orderItemsNotProcess=[];
+        $ordersProcess= NULL;
+        $orderItemsProcess=[];
+        $ordersDone=NULL;
+        $orderItemsDone=[];
 
         // get order by status = not process;
         $ordersNotProcess = Order::where('status', 'not process')->orderBy('id', 'desc')->get();
@@ -53,10 +53,10 @@ class CashierController extends Controller
 
     public function viewPayment(){
         //atribute
-        $ordersNotPayed='';
-        $orderItemsNotPayed[]=[];
-        $ordersPayed='';
-        $orderItemsPayed[]=[];
+        $ordersNotPayed=NULL;
+        $orderItemsNotPayed=[];
+        $ordersPayed=NULL;
+        $orderItemsPayed=[];
 
         // get order by paymentStatus = not payed;
         $ordersNotPayed = Order::where('paymentStatus', 'not payed')->get();

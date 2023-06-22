@@ -34,8 +34,8 @@ class OrderController extends Controller
     }
     public function yourOrder(){
         //atribute
-        $order = '';
-        $orderItems[] = [];
+        $order='';
+        $orderItems=[];
 
         // get order by consumer_id
         $order = Order::where('consumer_id',session('consumer')->id)->orderBy('id', 'desc')->get();
@@ -52,5 +52,6 @@ class OrderController extends Controller
 
         ]);
     }
+
 }
 

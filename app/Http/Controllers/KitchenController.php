@@ -10,10 +10,10 @@ class KitchenController extends Controller
 {
     public function view(){
         //atribute
-        $orders='';
-        $orderItems[]=[];
-        $ordersDone ='';
-        $orderItemsDone[] = [];
+        $orders=NULL;
+        $orderItems=[];
+        $ordersDone =NULL;
+        $orderItemsDone=[];
 
         // get order by status = process
         $orders = Order::where('status', 'process')->get();
