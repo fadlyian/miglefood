@@ -19,6 +19,7 @@ use App\Http\Controllers\Auth\EmailVerificationPromptController;
 
 use App\Http\Controllers\Auth\AuthenticatedSessionCustomerController;
 use App\Http\Controllers\Auth\EmailVerificationNotificationController;
+use App\Http\Controllers\CashierController;
 
 Route::middleware('guest')->group(function () {
 
@@ -65,9 +66,11 @@ Route::middleware('auth')->group(function () {
         Route::get('/doneOrder/{id}', [KitchenController::class, 'doneOrder'])->name('doneOrder');
     });
 
+    // Cashier
     Route::middleware('roles:cashier')->group(function(){
         Route::get('/dashboard-cashier', [DashboardController::class, 'homeCashier'])->name('dashboard-cashier');
-        Route::get('/dashboard-order-list', [DashboardController::class, 'orderListCashier'])->name('dashboard-order-list');
+        // Route::get('/dashboard-order-list', [DashboardController::class, 'orderListCashier'])->name('dashboard-order-list');
+        Route::get('/dashboard-order-list', [CashierController::class, 'view'])->name('dashboard-order-list');
         Route::get('/dashboard-payment', [DashboardController::class, 'paymentCashier'])->name('dashboard-payment');
     });
 
