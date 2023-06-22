@@ -4,7 +4,7 @@
     <div class="shadow p-6 rounded-md my-2 text-[14px] hover:shadow-md transition ease-in-out duration-150">
         <x-format-text>
             <p>Customer Phone</p>
-            <p>{{ $order->consumer->phoneNumber }}</p>
+            <p>{{ substr($order->consumer->phoneNumber, 0, 4) }}******</p>
         </x-format-text>
         <x-format-text>
             <p>Table Number</p>
