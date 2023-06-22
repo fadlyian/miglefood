@@ -70,8 +70,10 @@ Route::middleware('auth')->group(function () {
     Route::middleware('roles:cashier')->group(function(){
         Route::get('/dashboard-cashier', [DashboardController::class, 'homeCashier'])->name('dashboard-cashier');
         // Route::get('/dashboard-order-list', [DashboardController::class, 'orderListCashier'])->name('dashboard-order-list');
+        // Route::get('/dashboard-payment', [DashboardController::class, 'paymentCashier'])->name('dashboard-payment');
         Route::get('/dashboard-order-list', [CashierController::class, 'view'])->name('dashboard-order-list');
-        Route::get('/dashboard-payment', [DashboardController::class, 'paymentCashier'])->name('dashboard-payment');
+        Route::get('/dashboard-payment', [CashierController::class, 'viewPayment'])->name('dashboard-payment');
+        Route::get('/donePayment/{id}', [CashierController::class, 'donePayment'])->name('donePayment');
     });
 
     Route::middleware('roles:admin')->group(function () {
