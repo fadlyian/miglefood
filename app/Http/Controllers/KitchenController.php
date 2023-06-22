@@ -18,7 +18,7 @@ class KitchenController extends Controller
         }
 
         // get order by status = done;
-        $ordersDone = Order::where('status', 'Done')->get();
+        $ordersDone = Order::where('status', 'Done')->orderBy('id', 'desc')->get();
 
         // get order item by order_id
         foreach($ordersDone as $od){
