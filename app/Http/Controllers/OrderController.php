@@ -18,6 +18,13 @@ class OrderController extends Controller
         ]);
     }
 
+    public function inputTable(Request $request){
+
+        session(['table' => $request->table]);
+
+        return redirect()->back();
+    }
+
     public function allMenu(){
         return view('customer.page.all-menu', [
             'products' => Product::all(),

@@ -35,6 +35,8 @@ Route::middleware('auth.consumer')->group(function (){
 
     Route::get('/home', [OrderController::class, 'home'])->name('home');
     Route::view('/all-orders', 'customer.page.all-orders')->name('all-orders');
+    //input table
+    Route::post('/inputTable', [OrderController::class, 'inputTable'])->name('inputTable');
 
     // cart
     // Route::view('/cart', 'customer.page.cart')->name('cart');

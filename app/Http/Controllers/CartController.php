@@ -66,7 +66,7 @@ class CartController extends Controller
             'cashier_id' => User::where('id', 4)->first()->id,
             'consumer_id' => $consumer->id,
             'status' => 'process',
-            'tableNumber' => '',
+            'tableNumber' => session('table'),
             'subTotal' => $request->subTotal,
             'ppn' => $request->ppn,
             'grandTotal' => $request->grandTotal,
