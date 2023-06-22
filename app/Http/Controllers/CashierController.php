@@ -20,11 +20,11 @@ class CashierController extends Controller
         }
 
         // get order by status = process
-        $orders = Order::where('status', 'process')->get();
+        $ordersProcess = Order::where('status', 'process')->get();
 
         // get order item by order_id
-        foreach($orders as $od){
-            $orderItems[] = OrderDetail::where('order_id', $od->id)->get();
+        foreach($ordersProcess as $od){
+            $orderItemsProcess[] = OrderDetail::where('order_id', $od->id)->get();
         }
 
         // get order by status = done;
@@ -41,7 +41,7 @@ class CashierController extends Controller
         //     'orderItems' => $orderItems,
         //     'orderItemsDone' => $orderItemsDone,
         // ]);
-        return view('dashboard.sales-management.order-list', compact('orders','ordersDone','orderItems', 'orderItemsDone', 'ordersNotProcess', 'orderItemsNotProcess'));
+        return view('dashboard.sales-management.order-list', compact('ordersNotProcess','orderItemsNotProcess','ordersProcess', 'orderItemsProcess', 'ordersDone', 'orderItemsDone'));
     }
 
     public function viewPayment(){
