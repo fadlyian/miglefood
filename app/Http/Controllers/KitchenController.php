@@ -36,7 +36,7 @@ class KitchenController extends Controller
         //     'orderItems' => $orderItems,
         //     'orderItemsDone' => $orderItemsDone,
         // ]);
-        return view('dashboard.chef.dashboard', compact('orders','ordersDone','orderItems', 'orderItemsDone'));
+        return view('dashboard.chef.dashboard', compact('orders','orderItems','ordersDone', 'orderItemsDone'));
     }
 
     public function doneOrder(string $id){

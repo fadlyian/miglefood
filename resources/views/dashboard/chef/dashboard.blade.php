@@ -1,8 +1,8 @@
 <x-app-layout>
     <div class="flex-auto px-[15%] mt-[6%]">
         <div class="pb-[20px]">
-            <h2 class="bg-red-500 max-w-max m-auto px-2 py-1 rounded-md mb-4 text-[24px] text-center font-bold text-white">Order Not Precess</h2>
-            @for ($i = 0; $i < count($orders); $i++)
+            {{-- <h2 class="bg-red-500 max-w-max m-auto px-2 py-1 rounded-md mb-4 text-[24px] text-center font-bold text-white">Order Not Process</h2> --}}
+            {{-- @for ($i = 0; $i < count($orders); $i++)
             <div class="bg-white text-[16px] p-6 shadow-sm hover:shadow-md rounded-lg w-full mb-6 transition ease-out  duration-150">
                 <div>
                     <x-format-text>
@@ -52,7 +52,7 @@
                     </div>
                 </form>
             </div>
-            @endfor
+            @endfor --}}
 
             <h2 class="bg-yellow-500 max-w-max m-auto px-2 py-1 rounded-md mb-4 text-[24px] text-center font-bold text-white">Order On Process</h2>
             @for ($i = 0; $i < count($orders); $i++)
