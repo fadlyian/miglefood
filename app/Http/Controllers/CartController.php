@@ -65,7 +65,7 @@ class CartController extends Controller
         $order = Order::create([
             'cashier_id' => User::where('id', 4)->first()->id,
             'consumer_id' => $consumer->id,
-            'status' => 'process',
+            'status' => 'not process',
             'tableNumber' => session('table'),
             'subTotal' => $request->subTotal,
             'ppn' => $request->ppn,
