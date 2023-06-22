@@ -33,7 +33,8 @@
                             <tr>
                                 <td>{{ $orderItem->quantity }}</td>
                                 <td>{{ $orderItem->product->name }}</td>
-                                <td class="text-right">IDR {{ number_format($orderItem->product->price, 2, ',', '.') }}</td>
+                                <td class="text-right">IDR {{ number_format($orderItem->product->price, 2, ',', '.') }}
+                                </td>
                             </tr>
                         @endforeach
                     </table>
@@ -63,7 +64,6 @@
             Order On Process</h2>
         @if (count($orderItemsProcess) > 0)
         @for ($i = 0; $i < count($ordersProcess); $i++)
-            {{-- @if ($orders[$i]->paymentStatus === 'on process') --}}
             <div class="bg-white text-[16px] p-6 shadow-sm hover:shadow-md rounded-lg w-full mb-6 transition ease-out">
                 <x-format-text>
                     <p>Customer Phone</p>
@@ -87,7 +87,8 @@
                         <tr>
                             <td>{{ $orderItem->quantity }}</td>
                             <td>{{ $orderItem->product->name }}</td>
-                            <td class="text-right">IDR {{ number_format($orderItem->product->price, 2, ',', '.') }}</td>
+                            <td class="text-right">IDR {{ number_format($orderItem->product->price, 2, ',', '.') }}
+                            </td>
                         </tr>
                     @endforeach
                 </table>
@@ -105,7 +106,6 @@
                     <strong>IDR {{ number_format($ordersProcess[$i]->grandTotal, 2, ',', '.') }}</strong>
                 </x-format-text>
             </div>
-            {{-- @endif --}}
         @endfor
         @endif
 
@@ -137,7 +137,8 @@
                         <tr>
                             <td>{{ $orderItem->quantity }}</td>
                             <td>{{ $orderItem->product->name }}</td>
-                            <td class="text-right">IDR {{ number_format($orderItem->product->price, 2, ',', '.') }}</td>
+                            <td class="text-right">IDR {{ number_format($orderItem->product->price, 2, ',', '.') }}
+                            </td>
                         </tr>
                     @endforeach
                 </table>

@@ -9,6 +9,12 @@ use Illuminate\Http\Request;
 class KitchenController extends Controller
 {
     public function view(){
+        //atribute
+        $orders='';
+        $orderItems[]=[];
+        $ordersDone ='';
+        $orderItemsDone[] = [];
+
         // get order by status = process
         $orders = Order::where('status', 'process')->get();
 
