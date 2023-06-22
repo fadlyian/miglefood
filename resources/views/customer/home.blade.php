@@ -40,13 +40,18 @@
                 </div>
                 <x-horizontal-scroll>
                     @foreach ($categories as $category)
-                    <x-category-link href="#">{{ $category->name }}</x-category-link>
+                    <x-category-link href="{{ route('productByCategory', $category->id) }}">{{ $category->name }}</x-category-link>
                     @endforeach
                 </x-horizontal-scroll>
                 <div class="grid grid-cols-2">
                     @foreach ($products as $product)
                     <x-product-layout>
-                        <img src="{{ asset('/leker.png') }}" alt="" class="w-full">
+                        @if ($product->image)
+                            <img src="{{ asset('storage/image/products/' . $product->image) }}" alt="{{ $product->image }}" class="w-full flex-0 mr-6">
+                            @else
+                            <img src="{{ asset('/leker.png') }}" alt="Leker" class="w-full flex-0 mr-6">
+                        @endif
+                        {{-- <img src="{{ asset('/leker.png') }}" alt="" class="w-full"> --}}
                         <div class="my-2">
                             <strong class="text-[14px]">{{ $product->name }}</strong>
                             <div class="flex justify-between text-[10px] my-1">

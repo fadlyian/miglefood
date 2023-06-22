@@ -10,7 +10,7 @@
     <x-btm-link class="items-center" :href="route('cart')" :active="request()->routeIs('cart')">
         @if(true)
         <i class="fa-solid fa-cart-shopping"></i>
-        <p class="absolute ml-4 rounded-full text-[8px] font-bold p-[2px] bg-white border-2 border-[#FFC529]">10</p>
+        {{-- <p class="absolute ml-4 rounded-full text-[8px] font-bold p-[2px] bg-white border-2 border-[#FFC529]">10</p> --}}
         @else
         <i class="fa-solid fa-cart-shopping"></i>
         @endif
