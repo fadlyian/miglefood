@@ -50,9 +50,10 @@ Route::middleware('guest')->group(function () {
 
 Route::middleware('auth')->group(function () {
 
-    Route::get('/dashboard-order-list', function(){
-        return view('dashboard.sales-management.order-list');
-    })->name('dashboard-order-list');
+    // Route::get('/dashboard-order-list', function(){
+    //     return view('dashboard.sales-management.order-list');
+    // })->name('dashboard-order-list');
+
 
     Route::get('/dashboard-transaction-history', [DashboardController::class, 'transactionHistory'])->name('dashboard-transaction-history');
 
@@ -90,6 +91,9 @@ Route::middleware('auth')->group(function () {
 
         //product/menu
         Route::resource('product', ProductController::class);
+
+        //view list
+        Route::get('/dashboard-order-list', [CashierController::class, 'view'])->name('dashboard-order-list');
     });
 
     Route::get('verify-email', EmailVerificationPromptController::class)
