@@ -163,20 +163,30 @@
                     <th class="py-2 px-4 border-b text-left">Total</th>
                 </tr>
             </thead>
-            <tbody>
-                <?php for ($i = 0; $i < 10; $i++) { ?>
-                    <tr>
-                        <td class="py-2 px-4 border-b text-left">1</td>
-                        <td class="py-2 px-4 border-b text-left">Nama Produk</td>
-                        <td class="py-2 px-4 border-b text-center">10</td>
-                        <td class="py-2 px-4 border-b text-left">IDR 29,000,00</td>
-                    </tr>
-                <?php } ?>
+            @php
+                $allCount=0;
+                $no=1;
+            @endphp
+            @for ($i=0; $i < count($orders); $i++)
+                @foreach ($orderItems[$i] as $orderItem)
+                <tr>
+                    <td class="py-2 px-4 border-b text-left">{{ $no }}</td>
+                    <td class="py-2 px-4 border-b text-left">{{ $orderItem->product->name }}</td>
+                    <td class="py-2 px-4 border-b text-center">{{ $orderItem->quantity }}</td>
+                    <td class="py-2 px-4 border-b text-left">IDR {{ number_format(($orderItem->product->price*$orderItem->quantity),2,',','.')  }}</td>
+                </tr>
+                @php
+                    $temp = ($orderItem->product->price*$orderItem->quantity);
+                    $allCount += $temp;
+                    $no++;
+                @endphp
+                @endforeach
+            @endfor
             </tbody>
         </table>
         <div class="mt-6 text-right">
             <p>Total Sales: </p>
-            <strong class="text-20px">IDR 29,100,00</strong>
+            <strong class="text-[20px]">IDR {{ number_format($allCount,2,',','.')  }}</strong>
         </div>
     </div>
 </body>

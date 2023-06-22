@@ -2,8 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Order;
 use PDF;
+use App\Models\Order;
+use App\Models\OrderDetail;
 
 class TransactionReportController extends Controller
 {
@@ -16,9 +17,19 @@ class TransactionReportController extends Controller
 
     public function generatePDF()
     {
-        $orders = Order::all();
+        // get order by status = process
+        $orders = Order::where('status', 'done')
+        ->where('paymentStatus', 'payed')
+        ->get();
 
-        $pdf = PDF::loadview('dashboard.sales-management.transaction-pdf',['orders'=>$orders]);
+        // get order item by order_id
+        foreach($orders as $od){
+            $orderItems[] = OrderDetail::where('order_id', $od->id)->get();
+        }
+
+        // $orders = Order::all();
+
+        $pdf = PDF::loadview('dashboard.sales-management.transaction-pdf',['orders'=>$orders, 'orderItems'=>$orderItems]);
     	return $pdf->stream();
         // return $pdf->download('transaction-report.pdf');
     }
