@@ -10,26 +10,27 @@ class KitchenController extends Controller
 {
     public function view(){
         // get order by status = process
-        $order = Order::where('status', 'process')->get();
+        $orders = Order::where('status', 'process')->get();
 
         // get order item by order_id
-        foreach($order as $od){
+        foreach($orders as $od){
             $orderItems[] = OrderDetail::where('order_id', $od->id)->get();
         }
 
         // get order by status = done;
-        $orderDone = Order::where('status', 'Done')->get();
+        $ordersDone = Order::where('status', 'Done')->get();
 
         // get order item by order_id
-        foreach($orderDone as $od){
+        foreach($ordersDone as $od){
             $orderItemsDone[] = OrderDetail::where('order_id', $od->id)->get();
         }
-        return view('dashboard.chef.dashboard',[
-            'orders' => $order,
-            'ordersDone' => $orderDone,
-            'orderItems' => $orderItems,
-            'orderItemsDone' => $orderItemsDone,
-        ]);
+        // return view('dashboard.chef.dashboard',[
+        //     'orders' => $order,
+        //     'ordersDone' => $orderDone,
+        //     'orderItems' => $orderItems,
+        //     'orderItemsDone' => $orderItemsDone,
+        // ]);
+        return view('dashboard.chef.dashboard', compact('orders','ordersDone','orderItems', 'orderItemsDone'));
     }
 
     public function doneOrder(string $id){
