@@ -94,6 +94,7 @@ Route::middleware('auth')->group(function () {
 
         //product/menu
         Route::resource('product', ProductController::class);
+        Route::get('/product-menu', [ProductController::class, 'create'])->name('product.create');
 
         //view list
         // Route::get('/dashboard-order-list', [CashierController::class, 'view'])->name('dashboard-order-list');
