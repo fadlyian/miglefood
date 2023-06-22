@@ -77,7 +77,7 @@ class ProductController extends Controller
     {
         $data = Product::findOrFail($id);
 
-        return view('dashboard.menu.edit-menu',[
+        return view('dashboard.admin.menu.edit-menu',[
             'data' => $data,
             'categories' => Category::all(),
         ]);
