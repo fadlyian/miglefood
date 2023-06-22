@@ -45,16 +45,18 @@
                 <div class="flex justify-between mt-4 text-white">
                     {{-- if order is completed --}}
                     @if($orders[$i]->status === 'done')
-                    <strong class="bg-green-500 px-2 py-1 rounded-md">Order Completed</strong>
+                    <strong class="bg-green-500 px-2 py-1 rounded-md">Done</strong>
+                    @elseif($orders[$i]->status === 'process')
+                    <strong class="bg-yellow-500 px-2 py-1 rounded-md">Process</strong>
                     @else
-                    <strong class="bg-red-500 px-2 py-1 rounded-md">Order Not Completed</strong>
+                    <strong class="bg-red-500 px-2 py-1 rounded-md">Not Process</strong>
                     @endif
 
                     {{-- if order is payed --}}
                     @if($orders[$i]->status === 'payed')
-                    <strong class="bg-green-500 px-2 py-1 rounded-md">The Order Has Been Paid</strong>
+                    <strong class="bg-green-500 px-2 py-1 rounded-md">Paid</strong>
                     @else
-                    <strong class="bg-red-500 px-2 py-1 rounded-md">Unpaid Order</strong>
+                    <strong class="bg-red-500 px-2 py-1 rounded-md">Unpaid</strong>
                     @endif
                 </div>
             </div>
