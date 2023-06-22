@@ -53,5 +53,21 @@ class OrderController extends Controller
         ]);
     }
 
+    public function allOrder(){
+        $orders = NULL;
+
+        $orders = Order::where('status', 'process')->get();
+        // return $orders;
+
+        return view('customer.page.all-orders', compact('orders'));
+    }
+
+    public function byCategory(string $id){
+        $categories = Category::all();
+        $products = Product::where('category_id', $id)->get();
+
+        return view('customer.page.all-menu-category', compact('products','categories'));
+    }
+
 }
 

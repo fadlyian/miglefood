@@ -34,9 +34,14 @@ Route::post('/', [ConsumerController::class, 'login'])->name('login-customer-sub
 Route::middleware('auth.consumer')->group(function (){
 
     Route::get('/home', [OrderController::class, 'home'])->name('home');
-    Route::view('/all-orders', 'customer.page.all-orders')->name('all-orders');
+    // view all by category
+    Route::get('/product/{id}', [OrderController::class, 'byCategory'])->name('productByCategory');
+
+    Route::get('/allOrder', [OrderController::class, 'allOrder'])->name('all-orders');
     //input table
     Route::post('/inputTable', [OrderController::class, 'inputTable'])->name('inputTable');
+
+    // all order
 
     // cart
     // Route::view('/cart', 'customer.page.cart')->name('cart');

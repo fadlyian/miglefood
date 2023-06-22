@@ -40,7 +40,7 @@
                 </div>
                 <x-horizontal-scroll>
                     @foreach ($categories as $category)
-                    <x-category-link href="#">{{ $category->name }}</x-category-link>
+                    <x-category-link href="{{ route('productByCategory', $category->id) }}">{{ $category->name }}</x-category-link>
                     @endforeach
                 </x-horizontal-scroll>
                 <div class="grid grid-cols-2">
