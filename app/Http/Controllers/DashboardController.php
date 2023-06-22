@@ -53,8 +53,31 @@ class DashboardController extends Controller
         ->where('paymentStatus', 'payed')
         ->get();
 
+        // get order item by order_id
+        foreach($order as $od){
+            $orderItems[] = OrderDetail::where('order_id', $od->id)->get();
+        }
+
         return view('dashboard.sales-management.transaction-report', [
             'orders' => $order,
+            'orderItems' => $orderItems
+        ]);
+    }
+
+    public function transactionPdf(){
+        // get order by status = process
+        $order = Order::where('status', 'done')
+        ->where('paymentStatus', 'payed')
+        ->get();
+
+        // get order item by order_id
+        foreach($order as $od){
+            $orderItems[] = OrderDetail::where('order_id', $od->id)->get();
+        }
+
+        return view('dashboard.sales-management.transaction-pdf', [
+            'orders' => $order,
+            'orderItems' => $orderItems
         ]);
     }
 

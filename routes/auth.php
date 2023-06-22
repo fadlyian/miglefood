@@ -60,6 +60,8 @@ Route::middleware('auth')->group(function () {
 
     Route::get('/dashboard-transaction-report', [DashboardController::class, 'transactionReport'])->name('dashboard-transaction-report');
 
+    // Route::get('/transaction-report/pdf', [TransactionReportController::class, 'transactionPdf'])->name('transaction-pdf');
+
     Route::get('/transaction-report/pdf', [TransactionReportController::class, 'generatePDF'])->name('transaction.pdf');
 
     // Kitchen or Chef or Dapur
