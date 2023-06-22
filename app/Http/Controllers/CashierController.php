@@ -11,8 +11,8 @@ class CashierController extends Controller
 {
     public function view(){
 
-        // get order by status = done;
-        $ordersNotProcess = Order::where('status', 'Done')->orderBy('id', 'desc')->get();
+        // get order by status = not process;
+        $ordersNotProcess = Order::where('status', 'not process')->orderBy('id', 'desc')->get();
 
         // get order item by order_id
         foreach($ordersNotProcess as $od){
@@ -28,7 +28,7 @@ class CashierController extends Controller
         }
 
         // get order by status = done;
-        $ordersDone = Order::where('status', 'Done')->orderBy('id', 'desc')->get();
+        $ordersDone = Order::where('status', 'done')->orderBy('id', 'desc')->get();
 
         // get order item by order_id
         foreach($ordersDone as $od){
