@@ -10,6 +10,13 @@ use PDO;
 class CashierController extends Controller
 {
     public function view(){
+        //atribute
+        $ordersNotProcess='';
+        $orderItemsNotProcess[]=[];
+        $ordersProcess='';
+        $orderItemsProcess[]=[];
+        $ordersDone='';
+        $orderItemsDone[]=[];
 
         // get order by status = not process;
         $ordersNotProcess = Order::where('status', 'not process')->orderBy('id', 'desc')->get();
@@ -45,6 +52,11 @@ class CashierController extends Controller
     }
 
     public function viewPayment(){
+        //atribute
+        $ordersNotPayed='';
+        $orderItemsNotPayed[]=[];
+        $ordersPayed='';
+        $orderItemsPayed[]=[];
 
         // get order by paymentStatus = not payed;
         $ordersNotPayed = Order::where('paymentStatus', 'not payed')->get();
