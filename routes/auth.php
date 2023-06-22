@@ -3,7 +3,9 @@
 use App\Models\Product;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\KitchenController;
 use App\Http\Controllers\ProductController;
+use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\Auth\PasswordController;
 use App\Http\Controllers\Auth\NewPasswordController;
 use App\Http\Controllers\Auth\VerifyEmailController;
@@ -14,9 +16,9 @@ use App\Http\Controllers\Auth\RegisteredProductController;
 use App\Http\Controllers\Auth\ConfirmablePasswordController;
 use App\Http\Controllers\Auth\AuthenticatedSessionController;
 use App\Http\Controllers\Auth\EmailVerificationPromptController;
+
 use App\Http\Controllers\Auth\AuthenticatedSessionCustomerController;
 use App\Http\Controllers\Auth\EmailVerificationNotificationController;
-use App\Http\Controllers\KitchenController;
 
 Route::middleware('guest')->group(function () {
 
@@ -51,40 +53,27 @@ Route::middleware('auth')->group(function () {
         return view('dashboard.sales-management.order-list');
     })->name('dashboard-order-list');
 
-    Route::get('/dashboard-payment', function(){
-        return view('dashboard.sales-management.payment');
-    })->name('dashboard-payment');
+    Route::get('/dashboard-transaction-history', [DashboardController::class, 'transactionHistory'])->name('dashboard-transaction-history');
 
-    Route::get('/dashboard-transaction-history', function(){
-        return view('dashboard.sales-management.transaction-history');
-    })->name('dashboard-transaction-history');
-
-    Route::get('/dashboard-transaction-report', function(){
-        return view('dashboard.sales-management.transaction-report');
-    })->name('dashboard-transaction-report');
+    Route::get('/dashboard-transaction-report', [DashboardController::class, 'transactionReport'])->name('dashboard-transaction-report');
 
     Route::get('/transaction-report/pdf', [TransactionReportController::class, 'generatePDF'])->name('transaction.pdf');
 
     // Kitchen or Chef or Dapur
     Route::middleware('roles:chef')->group(function(){
-        // Route::get('/dashboard-chef', function(){
-        //     return view('dashboard.chef.dashboard');
-        // })->name('dashboard-chef');
         Route::get('/dashboard-chef', [KitchenController::class, 'view'])->name('dashboard-chef');
         Route::get('/doneOrder/{id}', [KitchenController::class, 'doneOrder'])->name('doneOrder');
     });
 
     Route::middleware('roles:cashier')->group(function(){
-        Route::get('/dashboard-cashier', function(){
-            return view('dashboard.cashier.dashboard');
-        })->name('dashboard-cashier');
+        Route::get('/dashboard-cashier', [DashboardController::class, 'homeCashier'])->name('dashboard-cashier');
+        Route::get('/dashboard-order-list', [DashboardController::class, 'orderListCashier'])->name('dashboard-order-list');
+        Route::get('/dashboard-payment', [DashboardController::class, 'paymentCashier'])->name('dashboard-payment');
     });
 
     Route::middleware('roles:admin')->group(function () {
 
-        Route::get('/dashboard', function () {
-            return view('dashboard.admin.dashboard');
-        })->name('dashboard');
+        Route::get('/dashboard', [DashboardController::class, 'homeAdmin'])->name('dashboard');
 
         // profile
         Route::get('/add-account', [RegisteredUserController::class, 'create'])->name('add-account');

@@ -70,7 +70,7 @@ class CartController extends Controller
             'subTotal' => $request->subTotal,
             'ppn' => $request->ppn,
             'grandTotal' => $request->grandTotal,
-            'paymentStatus' => 'belum bayar',
+            'paymentStatus' => 'not payed',
         ]);
 
         // Process the cart items and store order details

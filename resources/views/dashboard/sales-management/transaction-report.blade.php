@@ -11,14 +11,6 @@
             <a class="block max-w-[200px] px-6 py-3 m-auto mt-2 bg-[#FFC529] border border-transparent rounded-full font-semibold text-xs text-black capitalize tracking-widest hover:bg-[#FFD669] focus:bg-[#FFD669] active:[#FFC529] focus:outline-none focus:ring-2 focus:ring-[#FFC529] focus:ring-offset-2 transition ease-in-out duration-150" href="{{ route('transaction.pdf') }}" class="btn btn-primary">Generate PDF</a>
         </div>
         <div class="bg-white text-[16px] p-6 shadow-sm hover:shadow-md rounded-lg w-full mb-6 transition ease-out">
-            {{-- <div class="flex justify-between items-center mb-6">
-                <x-application-logo class="block h-[37px] w-auto fill-current text-gray-800" />
-                <p>PT Miglefood Putra Bangsa</p>
-            </div>
-            <div class="text-center text-[20px] font-bold mb-6">
-                <p>Sales Report</p>
-                <p>{{ now()->format('l, d F Y') }}</p>
-            </div> --}}
             <table class="min-w-full bg-white">
                 <thead>
                 <tr>
@@ -29,14 +21,6 @@
                 </tr>
                 </thead>
                 <tbody>
-                {{-- @foreach($products as $product)
-                    <tr>
-                    <td class="py-2 px-4 border-b text-left">{{ $product->nama }}</td>
-                    <td class="py-2 px-4 border-b text-left">{{ $product->jumlah_terjual }}</td>
-                    <td class="py-2 px-4 border-b text-left">{{ $product->total }}</td>
-                    <!-- Tambahkan field lainnya sesuai kebutuhan -->
-                    </tr>
-                @endforeach --}}
                 @for($i = 0; $i < 10; $i++)
                 <tr>
                     <td class="py-2 px-4 border-b text-left">1</td>

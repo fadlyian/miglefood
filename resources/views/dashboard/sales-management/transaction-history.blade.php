@@ -5,20 +5,20 @@
     @include('layouts.sidebar-cashier')
     @endif
     <div class="flex-auto ml-[32%] mt-[6%] max-w-[65%]">
-        @for($i = 0; $i < 5; $i++)
+        @foreach ($orders as $order)
         <div class="bg-white text-[16px] p-6 shadow-sm hover:shadow-md rounded-lg w-full mb-6 transition ease-out">
             <div>
                 <x-format-text>
-                    <p>Customer Name</p>
-                    <strong>Arif Saputra</strong>
+                    <p>Customer Phone</p>
+                    <strong>{{ $order->consumer->phoneNumber }}</strong>
                 </x-format-text>
                 <div class="h-[2px] w-full bg-slate-100 my-3"></div>
                 <x-format-text>
                     <p>Grand Total</p>
-                    <strong>IDR 356,400.00</strong>
+                    <strong>IDR {{ number_format($order->grandTotal,2,',','.')  }}</strong>
                 </x-format-text>
             </div>
         </div>
-        @endfor
+        @endforeach
     </div>
 </x-app-layout>
