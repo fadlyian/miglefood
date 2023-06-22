@@ -19,7 +19,7 @@ class CashierController extends Controller
         $orderItemsDone[]=[];
 
         // get order by status = not process;
-        $ordersNotProcess = Order::where('status', 'not process')->orderBy('id', 'desc')->get();
+        $ordersNotProcess = Order::where('status', 'not process')->get();
 
         // get order item by order_id
         foreach($ordersNotProcess as $od){
