@@ -7,20 +7,21 @@
             <!-- Session Status -->
             <x-auth-session-status class="mb-4" :status="session('status')" />
 
-            <form method="POST" action="{{ route('edit-account') }}">
+            <form method="POST" action="{{ route('update-account', $data->id) }}">
                 @csrf
+                @method('put')
 
                 <!-- Name -->
                 <div>
                     <x-input-label for="name" :value="__('Name')" />
-                    <x-text-input id="name" class="block mt-1 w-full" type="text" name="name" :value="old('name')" required autofocus autocomplete="username" />
+                    <x-text-input id="name" class="block mt-1 w-full" type="text" name="name" value="{{ old('name', $data->name) }}" required autofocus autocomplete="username" />
                     <x-input-error :messages="$errors->get('name')" class="mt-2" />
                 </div>
 
                 <!-- Email Address -->
                 <div class="mt-4">
                     <x-input-label for="email" :value="__('Email')" />
-                    <x-text-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email')" required autofocus autocomplete="email" />
+                    <x-text-input id="email" class="block mt-1 w-full" type="email" name="email" value="{{ old('name', $data->email) }}" required autofocus autocomplete="email" />
                     <x-input-error :messages="$errors->get('email')" class="mt-2" />
                 </div>
 
@@ -29,9 +30,11 @@
                     <x-input-label for="role" :value="__('Role')" />
                     <select name="role" id="role" class="w-full block mt-1 border-gray-300 focus:border-[#FFC529] focus:ring-[#FFC529] rounded-md shadow-sm" required autofocus>
                         <option disabled selected>Choose One</option>
-                        <option value="admin">Admin</option>
-                        <option value="cashier">Cashier</option>
-                        <option value="chef">Chef</option>
+
+                        {{-- <option value="{{ if(old('name', $data->role) == 'admin'): 'selected'? }}">Admin</option> --}}
+                        <option value="admin" @if($data->role == 'admin'): selected ? @endif>Admin</option>
+                        <option value="cashier" @if($data->role == 'cashier'): selected ? @endif>Cashier</option>
+                        <option value="chef" @if($data->role == 'chef'): selected ? @endif>Chef</option>
                     </select>
                     <x-input-error :messages="$errors->get('role')" class="mt-2" />
                 </div>
