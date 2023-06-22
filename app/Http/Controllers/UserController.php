@@ -20,7 +20,7 @@ class UserController extends Controller
     }
 
     public function edit(string $id){
-        return view('dashboard.account.edit-account',[
+        return view('dashboard.admin.account.edit-account',[
             'data' => User::findOrFail($id),
         ]);
     }

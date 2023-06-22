@@ -53,6 +53,7 @@ Route::middleware('auth')->group(function () {
     // Route::get('/dashboard-order-list', function(){
     //     return view('dashboard.sales-management.order-list');
     // })->name('dashboard-order-list');
+    Route::get('/dashboard-order-list', [CashierController::class, 'view'])->name('dashboard-order-list');
 
 
     Route::get('/dashboard-transaction-history', [DashboardController::class, 'transactionHistory'])->name('dashboard-transaction-history');
@@ -72,7 +73,7 @@ Route::middleware('auth')->group(function () {
         Route::get('/dashboard-cashier', [DashboardController::class, 'homeCashier'])->name('dashboard-cashier');
         // Route::get('/dashboard-order-list', [DashboardController::class, 'orderListCashier'])->name('dashboard-order-list');
         // Route::get('/dashboard-payment', [DashboardController::class, 'paymentCashier'])->name('dashboard-payment');
-        Route::get('/dashboard-order-list', [CashierController::class, 'view'])->name('dashboard-order-list');
+        // Route::get('/dashboard-order-list', [CashierController::class, 'view'])->name('dashboard-order-list');
         Route::get('/dashboard-payment', [CashierController::class, 'viewPayment'])->name('dashboard-payment');
         Route::get('/donePayment/{id}', [CashierController::class, 'donePayment'])->name('donePayment');
     });
@@ -93,7 +94,7 @@ Route::middleware('auth')->group(function () {
         Route::resource('product', ProductController::class);
 
         //view list
-        Route::get('/dashboard-order-list', [CashierController::class, 'view'])->name('dashboard-order-list');
+        // Route::get('/dashboard-order-list', [CashierController::class, 'view'])->name('dashboard-order-list');
     });
 
     Route::get('verify-email', EmailVerificationPromptController::class)

@@ -7,13 +7,15 @@
             <!-- Session Status -->
             <x-auth-session-status class="mb-4" :status="session('status')" />
 
-            <form method="POST" action="{{ route('edit-menu') }}" enctype="multipart/form-data">
+            <form method="POST" action="{{ route('product.update', $data->id) }}" enctype="multipart/form-data">
                 @csrf
+                @method('put')
 
                 <!-- Name -->
                 <div>
+                    <h1>{{ $data }}</h1>
                     <x-input-label for="name" :value="__('Name')" />
-                    <x-text-input id="name" class="block mt-1 w-full" type="text" name="name" :value="old('name')" required/>
+                    <x-text-input id="name" class="block mt-1 w-full" type="text" name="name" value="{{ old('name', $data->name) }}" required/>
                     <x-input-error :messages="$errors->get('name')" class="mt-2" />
                 </div>
 
@@ -22,9 +24,9 @@
                     <x-input-label for="category" :value="__('Category')" />
                     <select name="category_id" id="category_id" class="w-full block mt-1 border-gray-300 focus:border-[#FFC529] focus:ring-[#FFC529] rounded-md shadow-sm" required>
                         <option disabled selected>Choose One</option>
-                        {{-- @foreach ($categories as $category)
+                        @foreach ($categories as $category)
                         <option value="{{ $category->id }}">{{ $category->name }}</option>
-                        @endforeach --}}
+                        @endforeach
                     </select>
                     <x-input-error :messages="$errors->get('role')" class="mt-2" />
                 </div>
@@ -32,18 +34,18 @@
                 <!-- Stock -->
                 <div class="mt-4">
                     <x-input-label for="stock" :value="__('Stock')" />
-                    <x-text-input id="stock" class="block mt-1 w-full" type="number" name="stock" :value="old('stock')" required/>
+                    <x-text-input id="stock" class="block mt-1 w-full" type="number" name="stock" value="{{ old('name', $data->stock) }}" required/>
                     <x-input-error :messages="$errors->get('stock')" class="mt-2" />
                 </div>
 
                 <!-- Price -->
                 <div class="mt-4">
                     <x-input-label for="price" :value="__('Price')" />
-                    <x-text-input id="price" class="block mt-1 w-full" type="number" name="price" :value="old('price')" required/>
+                    <x-text-input id="price" class="block mt-1 w-full" type="number" name="price" value="{{ old('name', $data->price) }}" required/>
                     <x-input-error :messages="$errors->get('price')" class="mt-2" />
                 </div>
 
-                <!-- Choose Image File -->
+                {{-- <!-- Choose Image File -->
                 <div class="mt-4">
                     <x-input-label for="image" :value="__('Choose Image')" class="mb-2" />
                     <input type="file" id="image" name="image" :value="old('image')" hidden required/>
@@ -57,7 +59,7 @@
                         })
                     </script>
                     <x-input-error :messages="$errors->get('image')" class="mt-2" />
-                </div>
+                </div> --}}
 
                 <div class="flex items-center justify-end mt-4">
                     <x-primary-button class="my-2">
