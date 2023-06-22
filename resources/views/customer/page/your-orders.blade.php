@@ -44,14 +44,14 @@
                 </x-format-text>
                 <div class="flex justify-between mt-4 text-white">
                     {{-- if order is completed --}}
-                    @if(true)
+                    @if($orders[$i]->status === 'done')
                     <strong class="bg-green-500 px-2 py-1 rounded-md">Order Completed</strong>
                     @else
                     <strong class="bg-red-500 px-2 py-1 rounded-md">Order Not Completed</strong>
                     @endif
 
                     {{-- if order is payed --}}
-                    @if(true)
+                    @if($orders[$i]->status === 'payed')
                     <strong class="bg-green-500 px-2 py-1 rounded-md">The Order Has Been Paid</strong>
                     @else
                     <strong class="bg-red-500 px-2 py-1 rounded-md">Unpaid Order</strong>
