@@ -47,7 +47,7 @@
                     <p>Grand Total</p>
                     <strong>IDR {{ number_format($ordersNotPayed[$i]->grandTotal,2,',','.') }}</strong>
                 </x-format-text>
-                <form action="{{ route('doneOrder',$ordersNotPayed[$i]->id) }}" method="get">
+                <form action="{{ route('donePayment',$ordersNotPayed[$i]->id) }}" method="get">
                     @csrf
                     <div class="mt-6 w-full text-end">
                         <x-primary-button class="w-[300px]">order confirmation has been paid</x-primary-button>
