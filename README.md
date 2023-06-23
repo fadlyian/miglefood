@@ -37,6 +37,15 @@ To run this project, you need to have the following software installed on your m
 
 ## Documentaion
 
+### Preview
+#### <h1 align="center">Consumer</h1> ####
+<br>
+<p align="center"><img src="public/readme/loginConsumer.png" width="400" alt="Laravel Logo"></p>
+<p align="center"><img src="public/readme/HomeMenu.png" width="400" alt="Laravel Logo"></p>
+<p align="center"><img src="public/readme/AllOrders.png" width="400" alt="Laravel Logo"></p>
+<p align="center"><img src="public/readme/Cart.png" width="400" alt="Laravel Logo"></p>
+<p align="center"><img src="public/readme/YourOrders.png" width="400" alt="Laravel Logo"></p>
+
 ### Schema Database
 <img src="public/readme/database-miglefood.drawio.png" alt="Laravel Logo">
 
