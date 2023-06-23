@@ -38,7 +38,7 @@ To run this project, you need to have the following software installed on your m
 ## Documentaion
 
 ### Schema Database
-<img src="public/readme/database-miglefood.drawio.png" width="400" alt="Laravel Logo">
+<img src="public/readme/database-miglefood.drawio.png" alt="Laravel Logo">
 
 <p align="center">
 <a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
