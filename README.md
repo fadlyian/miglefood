@@ -1,5 +1,44 @@
 <p align="center"><a href="https://laravel.com" target="_blank"><img src="public/MigleFood.png" width="400" alt="Laravel Logo"></a></p>
 
+# Migle Food
+
+This is a Laravel application project that aims to assist with service order at restaurant by using a website application 🍽
+
+## Getting Started
+
+These instructions will help you get a copy of the project up and running on your local machine for development and testing purposes.
+
+### Prerequisites
+
+To run this project, you need to have the following software installed on your machine:
+
+- PHP (version 8.1.2)
+- Composer (version 2.2.6)
+- MySQL (version 10.4.24)
+
+### installation 
+- git clone this repo
+- Go to the folder application using cd command on your cmd or terminal
+- Run composer install on your cmd or terminal
+- Copy .env.example file to .env on the root folder. You can type copy .env.example .env if using command prompt Windows or cp .env.example .env if using terminal, Ubuntu
+- Open your .env file and change the database name (DB_DATABASE) to whatever you have, username (DB_USERNAME) and password (DB_PASSWORD) field correspond to your configuration.
+- Run php artisan key:generate
+- Run php artisan migrate
+- Run php artisan serve
+- Go to http://localhost:8000/
+
+### Framework
+- Laravel
+- Tailwind
+
+### Contribution
+- [Fadly Sofyansyah](https://github.com/fadlyian) as BackEnd
+- [Arif Saputra](https://github.com/arifsptra) as FrontEnd
+
+## Documentaion
+
+### Schema Database
+
 <p align="center">
 <a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
 <a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
